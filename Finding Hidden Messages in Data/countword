@@ -9,7 +9,7 @@ def PatternCount(text, pattern):
 		for j in range(len(pattern)):
 			if(text[j + i] == pattern[j]):
 				correct += 1
-			print(text[j + i] + " " + pattern[j])
+			
 		if correct == len(pattern):
 			count += 1
 			correct = 0
@@ -17,7 +17,7 @@ def PatternCount(text, pattern):
 		else:
 			correct = 0
 		
-		print("count: " + str(count))
+		
 	return count
 
 
