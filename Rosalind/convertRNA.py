@@ -1,4 +1,4 @@
-#Counts anbd returns the number of bases in a sequence
+#Converts a DNA sequence into RNA
 def convertRNA(seq):
 	rna = ""
 
