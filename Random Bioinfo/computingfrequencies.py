@@ -20,3 +20,4 @@ def ComputingFrequencies(text, k):
 		j = PatternToNumber(Pattern)
 		FrequencyArray[j] = FrequencyArray[j + 1]
 	return FrequencyArray
+	
