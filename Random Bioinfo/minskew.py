@@ -14,7 +14,6 @@ re stringify to answer requirements
 
 def minSkew(genome):
 	skewed = {}
-	answer = ""
 	num = 0
 
 	for i in range(len(genome)):
