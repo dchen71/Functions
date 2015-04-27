@@ -1,2 +1,2 @@
-## This is a markdown file
+## Functions
 Storage for random functions 
