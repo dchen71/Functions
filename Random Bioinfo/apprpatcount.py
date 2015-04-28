@@ -14,7 +14,7 @@ def hammingdist(s1,s2):
 	for i in range(len(s1)):
 		if s1[i] != s2[i]:
 			dist += 1
-
+			
 	return dist
 
 def appratcount(text,pattern,d):
