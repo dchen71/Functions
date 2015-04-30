@@ -1,17 +1,17 @@
 ## Coderbyte problems
-Contains answers to problems on coderbyte__
+Contains answers to problems on coderbyte
 
-Easy Difficulty__
-First Reverse | reversestr.js__
-First Factorial | fact.js__
-
-
-Simple Adding | simpleadding.js__
+Easy Difficulty
+First Reverse | reversestr.js
+First Factorial | fact.js
 
 
-Check Nums | checknums.js__
-Time Convert | timeconvert.js__
+Simple Adding | simpleadding.js
 
-Medium Difficulty__
-Prime Time | primenumber.js__
+
+Check Nums | checknums.js
+Time Convert | timeconvert.js
+
+Medium Difficulty
+Prime Time | primenumber.js
 
