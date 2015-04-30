@@ -1,6 +1,6 @@
 ## Self Study
 Contains code for various functions related to Coderbyte and Rosalind
 
-Languages
-Python
+Languages <br/>
+Python<br/>
 Javascript
