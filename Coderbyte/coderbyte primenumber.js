@@ -1,5 +1,6 @@
 //Checks and returns boolean if a number is prime or not
-
+//Passes tests but will likely run into errors with other prime numbers
+//Better to have it num % primecheck in a for loop
 function PrimeTime(num) { 
 
   // code goes here  

@@ -1,5 +1,6 @@
-#Counts anbd returns the number of bases in a sequence
+#Counts and returns the number of bases in a sequence
 def countBase(seq):
+#Could be much more efficient if used dictionaries instead of 4 variables
 	numA = 0
 	numT = 0
 	numC = 0

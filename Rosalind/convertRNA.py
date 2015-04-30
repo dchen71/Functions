@@ -1,4 +1,5 @@
 #Converts a DNA sequence into RNA
+#Converts any T in a sequence into U
 def convertRNA(seq):
 	rna = ""
 

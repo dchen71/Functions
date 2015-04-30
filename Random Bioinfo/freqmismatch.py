@@ -13,6 +13,8 @@ def hammingdist(s1,s2):
 
 	return dist
 
+
+#Look into whether or not it also shows the mismatch version of it or not
 def freq_mismatch(text, k ,d):
 	kmers = {}
 	num = 0

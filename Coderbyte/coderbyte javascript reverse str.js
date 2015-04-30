@@ -1,7 +1,4 @@
-/*
-For this challenge you will be reversing a string.
-*/
-
+//Reverses a string
 function FirstReverse(str) { 
 var reverse = "";
 var sLength = str.length;

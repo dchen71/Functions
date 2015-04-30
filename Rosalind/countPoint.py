@@ -1,4 +1,5 @@
 #Counts the number of point mutations
+#(counts number of different characters in same size string)
 def countPoint(gen1,gen2):
 	points = 0
 	for i in range(len(gen1)):
