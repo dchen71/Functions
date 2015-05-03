@@ -1,28 +1,30 @@
 #Builds all possible sequences of k length
 
-from itertools import combinations_with_replacement
-
+import itertools
+#combinations does combos based on position in sequence and not the value itself
 
 def sequences(k):
-	seqList = {}
+	kmerList = {}
 	nuc = 'ATGC'
-	seqs = combinations_with_replacement(nuc,k)
+	seqs = itertools.product(nuc,repeat = k)
+	seqList = seqs
 
 	for i in seqs:
 		kmer = ""
 		for begin in range(k):
 			kmer += i[begin]
-		seqList[kmer] = 0
+		kmerList[kmer] = 0
 
-	return seqList
+	return kmerList
 
 #test out the usage of combinations with replacement
 
 
-test = sequences(2)
+test = sequences(4)
 
 for key, value in test.items():
 	print(key)
+
 
 '''
 test  = combinations_with_replacement('ATGC',2)
