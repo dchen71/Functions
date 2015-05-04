@@ -16,7 +16,8 @@
                 add FirstSymbol(Pattern) • Text to Neighborhood
         return Neighborhood
 '''
-
+#Suffix(Pattern) = k-1 mer (removed first char)
+#firstsymbol(pattern) = 1st char of seq
 
 #Only checks two equal length and find differences between the two strings
 def hammingdist(s1,s2):
@@ -31,15 +32,20 @@ def hammingdist(s1,s2):
 def neighbors(pattern, d):
 	if d == 0:
 		return pattern
-	if #|pattern| = 1
+	if len(pattern) == 1:
 		return {'A', 'C', 'G', 'T'}
+	
 	neighborhood = set()
-	suffixneighbors = neighbors(#Suffix(pattern, d))
+	suffix = pattern[1:len(pattern)]
+
+	suffixneighbors = neighbors(suffix, d)
 	for text in suffixneighbors:
-		if hammingdist(#Suffix(pattern), text) < d:
-			for nucleotide in {'A', 'C', 'G', 'T'}:
-				suffixneighbors.add(nucleotide * text)
+		if hammingdist(suffix, text) < d:
+			for nucleotide in {'A', 'C', 'G', 'T'}: #undeclared nucleotide variable, called differently?
+				suffixneighbors.add(nucleotide * text) #* might actually be product from itertools
 		else:
 			suffixneighbors.add(nucleotide * text)
 	return neighborhood
 
+
+print(neighbors('ACG',1))

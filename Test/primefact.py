@@ -14,9 +14,9 @@ def primetest(x):
 		return x
 	
 	prime = 2;
-	while(x > prime):
+	while(x > prime): #checks factorial vs prime number
 		#if evenly divisble, can shrink it down more since not prime
-		if(x % prime == 0):
+		if(x % prime == 0): 
 			x = x/prime
 			prime = 2 #resets so it can redetermine the largest prime since the common divisors are down here
 		else:

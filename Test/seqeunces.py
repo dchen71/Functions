@@ -2,6 +2,7 @@
 
 import itertools
 #combinations does combos based on position in sequence and not the value itself
+#needs to start with the other three bases in order to successfully make ther rest
 
 def sequences(k):
 	kmerList = {}

@@ -33,6 +33,7 @@ import itertools
 
 #Very slow, better off following advice and building after checking the first char
 #Probably check chars and build based on d
+#Also does not have all possible kmers
 
 #Builds and return a dictionary list of all kmer possibilties for length k
 def sequences(k):
