@@ -5,11 +5,14 @@ import itertools
 #Finds and returns the number of permuations and combinations an array has
 def perm(n):
 	answer = set() #needs to be all unique
-	array  = range(1, n + 1) #range list dont seem to work so for loop it*either than or it cause it ints not list
+	array  = []
+	for i in range(1, n +1):
+		array.append(i)
+
 
 	for i in range(len(array)):
 		if i == 0:
-			answer.add(itertools.product(array,n))
+			answer.add(itertools.product(array,n)) #might have to do a loop to extract each one and put in answer
 		else:
 			answer.add(itertools.product(rollover(array),n))
 	
