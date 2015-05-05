@@ -4,22 +4,22 @@ import itertools
 
 #Finds and returns the number of permuations and combinations an array has
 def perm(n):
-	answer = set() #needs to be all unique
+	answer = []
 	array  = []
 	for i in range(1, n +1):
 		array.append(i)
+	array = itertools.permutations(array)
 
-
-	for i in range(len(array)):
-		if i == 0:
-			answer.add(itertools.product(array,n)) #might have to do a loop to extract each one and put in answer
-		else:
-			answer.add(itertools.product(rollover(array),n))
-	
-	#return a formatted answer string
+	for i in array:
+		word = ""
+		for j in i: #each number of the returned array
+			word += str(j) + " "
+		word = word[:-1] #remove the last space
+		answer.append(word)
 
 	return answer
 
+'''
 #Moves the characters over one unit in an array
 def rollover(array):
 	moved = array
@@ -34,5 +34,15 @@ def rollover(array):
 		moved[len(moved) - 1] = temp0
 
 	return moved
+'''
 
-print(perm(5))
+	
+n = 7
+answer = perm(n)
+
+#Prints all the uniques
+for i in answer:
+	print(i)
+
+#Gets the length
+print(len(answer))
