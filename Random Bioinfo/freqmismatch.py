@@ -39,7 +39,7 @@ import itertools
 def sequences(k):
 	kmerList = {}
 	nuc = 'ATGC'
-	seqs = itertools.product(nuc,repeat = k)
+	seqs = itertools.permutations(nuc,repeat = k)
 	seqList = seqs
 
 	for i in seqs:

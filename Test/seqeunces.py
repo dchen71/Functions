@@ -1,13 +1,11 @@
 #Builds all possible sequences of k length
 
 import itertools
-#combinations does combos based on position in sequence and not the value itself
-#needs to start with the other three bases in order to successfully make ther rest
 
 def sequences(k):
 	kmerList = {}
 	nuc = 'ATGC'
-	seqs = itertools.product(nuc,repeat = k)
+	seqs = itertools.permutations(nuc)
 	seqList = seqs
 
 	for i in seqs:
@@ -17,9 +15,6 @@ def sequences(k):
 		kmerList[kmer] = 0
 
 	return kmerList
-
-#test out the usage of combinations with replacement
-
 
 test = sequences(4)
 
