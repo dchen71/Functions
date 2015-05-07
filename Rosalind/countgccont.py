@@ -1,5 +1,5 @@
 #Counts the percent of GC content in a series of Fasta and return the fasta id with highest content and percentage
-#Need to figure out why the incorrect value is returned for gc content
+#Need to figure out why the incorrect value is returned for gc content, might have something to do with gc since length should be corret now
 import operator
 
 def countgccont():
@@ -18,7 +18,8 @@ def countgccont():
 				lastkey = line
 			#If if ran before, computes the gc/total
 			else:
-				fastaseq[lastkey] = gc/total
+				fastaseq[lastkey] = gc/(total - 1)
+				print(total)
 				gc = 0
 				total = 0
 				fastaseq[line] = 0
@@ -28,7 +29,8 @@ def countgccont():
 			for nuc in line:
 				if nuc == 'G' or nuc == 'C':
 					gc += 1
-	fastaseq[lastkey] = gc/total
+	print(total)
+	fastaseq[lastkey] = gc/(total - 1)
 
 	return (max(fastaseq.items(),key=operator.itemgetter(1)))
 
