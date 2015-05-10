@@ -1,4 +1,4 @@
-#Counts the total number of permutations of length as well as return the list of permutations
+#Counts the total number of permutations of length n as well as return the list of permutations
 
 import itertools
 
