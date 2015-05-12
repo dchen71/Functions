@@ -11,6 +11,7 @@ def organizedstring(string, length):
 	
 	answer = itertools.permutations(nucleotides, 2)
 	#none of the itertools can accurately pull it off, need to make a algorithm to do it
+	#look up the documentation on how itertools were made
 
 	for i in answer:
 		print(i)
