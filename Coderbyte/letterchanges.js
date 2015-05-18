@@ -4,43 +4,23 @@ function LetterChanges(str) {
   var letters = new Array();
   
   //Setup dictionary like array
-  letters['a'] = 'b';
-  letters['b'] = 'c';
-  letters['c'] = 'd';
-  letters['d'] = 'E';
-  letters['e'] = 'f';
-  letters['f'] = 'g';
-  letters['g'] = 'h';
-  letters['h'] = 'I';
-  letters['i'] = 'j';
-  letters['j'] = 'k';
-  letters['k'] = 'l';
-  letters['l'] = 'm';
-  letters['m'] = 'n';
-  letters['n'] = 'O';
-  letters['o'] = 'p';
-  letters['p'] = 'q';
-  letters['q'] = 'r';
-  letters['r'] = 's';
-  letters['s'] = 't';
-  letters['t'] = 'U';
-  letters['u'] = 'v';
-  letters['v'] = 'w';
-  letters['w'] = 'x';
-  letters['x'] = 'y';
-  letters['y'] = 'z';
-  letters['z'] = 'A';
+  var letters = {'a' : 'b','b' : 'c','c' : 'd','d' : 'E','e':'f', 'f' : 'g','g' : 'h','h' : 'I','i' : 'j','j' : 'k',
+  				'k' : 'l','l' : 'm','m' : 'n','n' : 'O','o' : 'p','p' : 'q','q' : 'r','r' : 's','s' : 't','t' : 'U',
+  				'u' : 'v','v' : 'w','w' : 'x','x' : 'y','y' : 'z','z' : 'A'};
 
-  var answer = ""
-  var compare = str.toLowerCase();
+  var answer = "";
+  var compare = str.toLowerCase(); //standardize all chars to be lowercase
   
   //Has weird issue with certain characters in array returning as true
   //ex letters['a'] = true and e
-  for(i = 0; i <= str.length; i++){
-    if(letters[compare.charAt(i)] =! null)
-    	answer = answer.concat(letters[compare.charAt(i)]);
+  //go look up assocative arrays and figure out why certain variables returns true
+  //backwards but could try converting chars to number code to then use that to find up a version using arrays
+
+  for(letter in compare){
+    if(letters[letter] =! null)
+    	answer = answer.concat(letters[letter]);
     else
-    	answer = answer.concat(compare.charAt(i));
+    	answer = answer.concat(letter);
   }
  
  
