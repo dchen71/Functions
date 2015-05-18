@@ -22,5 +22,5 @@ Rosalind</br>
 Test</br>
 <em><li>Contains code for things being tested or implemented for usage in various places</li></em></br>
 
-Testing with RSpec
+Testing with RSpec</br>
 <em><li><Contains solutions for the introductory lesson/li></em></br>
