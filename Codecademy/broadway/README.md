@@ -1,4 +1,4 @@
 ##Broadway
-My implementation of the Broad rails app on codecademy</br>
-Reference page: </br>
-https://broadway-rails.herokuapp.com/
+My implementation of the Broadway rails app on codecademy</br>
+<strong>Reference page: </strong></br>
+<em>https://broadway-rails.herokuapp.com/</em>
