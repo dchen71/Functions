@@ -4,9 +4,11 @@ function LetterChanges(str) {
   var letters = new Array();
   
   //Setup dictionary like array
-  var letters = {'a' : 'b','b' : 'c','c' : 'd','d' : 'E','e':'f', 'f' : 'g','g' : 'h','h' : 'I','i' : 'j','j' : 'k',
-  				'k' : 'l','l' : 'm','m' : 'n','n' : 'O','o' : 'p','p' : 'q','q' : 'r','r' : 's','s' : 't','t' : 'U',
-  				'u' : 'v','v' : 'w','w' : 'x','x' : 'y','y' : 'z','z' : 'A'};
+  var code = {'a':0, 'b':1, 'c':2, 'd':3, 'e':4, 'f' :5, 'g':6, 'h': 7, 'i':8,'j':9,
+  				'k':10,'l':11,'m':12, 'n':13, 'o':14,'p':15, 'q':16, 'r':17, 's':18,'t':19,
+  				'u':20,'v':21,'w':22,'x':23,'y':24,'z':25};
+
+  var letters = ['bcdEfghIjklmnOpqrstUvwxyzA'];
 
   var answer = "";
   var compare = str.toLowerCase(); //standardize all chars to be lowercase
@@ -17,8 +19,8 @@ function LetterChanges(str) {
   //backwards but could try converting chars to number code to then use that to find up a version using arrays
 
   for(letter in compare){
-    if(letters[letter] =! null)
-    	answer = answer.concat(letters[letter]);
+    if(code[letter] =! null)
+    	answer = answer.concat(letters[code[letter]]);
     else
     	answer = answer.concat(letter);
   }
