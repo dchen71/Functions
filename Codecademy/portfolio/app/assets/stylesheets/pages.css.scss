@@ -1,0 +1,120 @@
+/*
+Welcome Page
+ */
+
+html, body, .container{
+	font-family: 'Roboto', sans-serif;
+	background-image: url(home.jpg);
+	height:100%;
+}
+
+.container{
+	float:left;
+	padding: 0 0;
+	min-width: 100%;
+	overflow:hidden;
+}
+
+/*
+Header
+ */
+
+.navbar {
+	height:100px;
+	
+	background-color: white;
+}
+
+.header-menu {
+	margin-left: 100px;
+	margin-top: 30px;
+}
+
+.header-menu li{
+	display:inline;
+	font-size: 18px;
+	margin-left: 10px;
+	color:black;
+}
+
+#name {
+	background:gray;
+}
+
+.name {
+	float:right;
+	margin-right: 100px;
+}
+
+/*
+Content
+ */
+
+.main {
+	padding-bottom: 150px;
+	color:white;
+	margin-top: 250px;
+}
+
+.main-text{
+	margin-left: auto;
+	margin-right:auto;
+	font-size: 40px;
+	width: 50%;
+}
+
+#line2 {
+	margin-left: 124px;
+}
+
+.btn {
+	float:right;
+	font-size: 20px;
+	color: white;
+	margin-right: 120px;
+
+	border-style: solid;
+	border-width: 1px;
+	background-color: black;
+}
+
+.btn:hover{
+	color:white;
+	transition:background-color 0.4s ease;
+	background-color: purple;
+}
+
+/*
+Footer
+ */
+.footer {
+	float:left;
+	padding: 0 0;
+	min-width: 100%;
+	overflow:hidden;
+	background-color: white;
+	height: 150px;
+	
+	position: relative;
+	margin-top: -150px;
+}
+
+.contact{
+	margin-right: 150px;
+	margin-top: 50px;
+}
+
+.social img{
+	width:3%;
+	height:3%;
+	float:right;
+}
+
+.contact p{
+	float:right;
+}
+
+/*
+Other Page
+ */
+
