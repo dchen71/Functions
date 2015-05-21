@@ -19,7 +19,7 @@ function LetterChanges(str) {
   //backwards but could try converting chars to number code to then use that to find up a version using arrays
 
   for(i=0;i< str.length; i++){
-    if(!code[compare[i]])
+    if(!code[compare[i]] == false)
     	answer = answer.concat(letters[code[compare[i]]]);
     else
     	answer = answer.concat(compare[i]);
