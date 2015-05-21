@@ -1,0 +1,39 @@
+/*
+Generatl formatting
+ */
+
+html, .container {
+	font-family: 'Lora', serif;
+	width: 100%;
+	height: 100%;
+}
+
+/*
+Homepage
+ */
+
+/*
+About
+ */
+
+/*
+Signup
+ */
+
+/*
+Footer
+ */
+
+.footer{
+	background-color: #E0E0EB;
+	height: 100px;
+	margin: 0;
+	float: left;
+	width: 100%;
+}
+
+.footer p{
+	position: relative;
+	top: 50%;
+	left: 50%;
+}
