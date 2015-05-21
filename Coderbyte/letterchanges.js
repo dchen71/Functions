@@ -8,7 +8,7 @@ function LetterChanges(str) {
   				'k':10,'l':11,'m':12, 'n':13, 'o':14,'p':15, 'q':16, 'r':17, 's':18,'t':19,
   				'u':20,'v':21,'w':22,'x':23,'y':24,'z':25};
 
-  var letters = ['bcdEfghIjklmnOpqrstUvwxyzA'];
+  var letters = 'bcdEfghIjklmnOpqrstUvwxyzA';
 
   var answer = "";
   var compare = str.toLowerCase(); //standardize all chars to be lowercase
@@ -18,11 +18,11 @@ function LetterChanges(str) {
   //go look up assocative arrays and figure out why certain variables returns true
   //backwards but could try converting chars to number code to then use that to find up a version using arrays
 
-  for(letter in compare){
-    if(code[letter] =! null)
-    	answer = answer.concat(letters[code[letter]]);
+  for(i=0;i< str.length; i++){
+    if(!code[compare[i]])
+    	answer = answer.concat(letters[code[compare[i]]]);
     else
-    	answer = answer.concat(letter);
+    	answer = answer.concat(compare[i]);
   }
  
  
@@ -35,22 +35,3 @@ function LetterChanges(str) {
 // keep this function call here 
 // to see how to enter arguments in JavaScript scroll down
 LetterChanges(readline());                            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            
-                            
-                            
-  
