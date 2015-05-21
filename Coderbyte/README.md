@@ -7,10 +7,20 @@ First Factorial | fact.js</br>
 Longest Word | longestword.js</br>
 Letter Changes | letterchanges.js</br>
 Simple Adding | simpleadding.js</br>
-
-
+Letter Capitialize | 
+Simple Symbols | 
 Check Nums | checknums.js</br>
 Time Convert | timeconvert.js</br>
+
+
+
+
+
+
+
+
+
+
 
 Medium Difficulty</br>
 Prime Time | primenumber.js</br>
