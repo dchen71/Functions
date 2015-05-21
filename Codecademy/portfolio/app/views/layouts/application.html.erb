@@ -9,8 +9,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div class="navbar">
+		<ul class="header-menu">
+			<%= link_to '<li>Welcome</li>'.html_safe, 'welcome' %>
+			<%= link_to '<li>Portfolio</li>'.html_safe, 'portfolio' %>
+			<%= link_to '<li>Blog</li>'.html_safe, 'https://medium.com/about-codecademy' %>
+			<%= link_to '<li>About</li>'.html_safe, 'about' %>
+			<%= link_to '<li>Contact</li>'.html_safe, 'contact'%>
+			<li class="name">Matt Healy</li>
+		</ul>
+	</div>
+
 
 <%= yield %>
+
+	<div class="footer">
+		<div class="contact">
+			<div class="social">
+				<%= link_to image_tag('facebook3.svg'), 'https://www.facebook.com'%>
+				<%= link_to image_tag('man42.svg'), 'https://www.linkedin.com'%>
+				<%= link_to image_tag('twitter2.svg'), 'https://www.twitter.com' %>
+			</div>
+		</br>
+		</br>
+		</br>
+		<p>©2015 Matt Healy</p>
+		</div>
 
 </body>
 </html>
