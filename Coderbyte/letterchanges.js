@@ -4,30 +4,23 @@ function LetterChanges(str) {
   var letters = new Array();
   
   //Setup dictionary like array
-  var code = {'a':0, 'b':1, 'c':2, 'd':3, 'e':4, 'f' :5, 'g':6, 'h': 7, 'i':8,'j':9,
-  				'k':10,'l':11,'m':12, 'n':13, 'o':14,'p':15, 'q':16, 'r':17, 's':18,'t':19,
-  				'u':20,'v':21,'w':22,'x':23,'y':24,'z':25};
+  var code = {'a':1, 'b':2, 'c':3, 'd':4, 'e':5, 'f' :6, 'g':7, 'h': 8, 'i':9,'j':10,
+  				'k':11,'l':12,'m':13, 'n':14, 'o':15,'p':16, 'q':17, 'r':18, 's':19,'t':20,
+  				'u':21,'v':22,'w':23,'x':24,'y':25,'z':26};
 
-  var letters = 'bcdEfghIjklmnOpqrstUvwxyzA';
+  var letters = ' bcdEfghIjklmnOpqrstUvwxyzA'; //Pool of characters moved up 1
 
   var answer = "";
   var compare = str.toLowerCase(); //standardize all chars to be lowercase
   
-  //Has weird issue with certain characters in array returning as true
-  //ex letters['a'] = true and e
-  //go look up assocative arrays and figure out why certain variables returns true
-  //backwards but could try converting chars to number code to then use that to find up a version using arrays
-
   for(i=0;i< str.length; i++){
-    if(!code[compare[i]] == false)
-    	answer = answer.concat(letters[code[compare[i]]]);
+    if(!code[compare.charAt(i)] == false)
+    	answer = answer.concat(letters.charAt(code[compare.charAt(i)]));
     else
-    	answer = answer.concat(compare[i]);
+    	answer = answer.concat(compare.charAt(i));
   }
- 
- 
   
-  // code goes here  
+  // code goes here  ;
   return answer; 
          
 }
