@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'home' => 'pages#home'
   get 'about' => 'about#about'
   get 'signups/new' => 'signups#new'
+  get 'signups/thanks' => 'signups#thanks'
 
   root 'pages#home'
 

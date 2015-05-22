@@ -1,24 +1,170 @@
 /*
-Generatl formatting
+Global formatting
  */
 
-html, .container {
+html, body {
+	font-family: 'Lora', serif;
+	width: 100%;
+	min-height: 100%;
+	overflow-x:hidden;
+}
+
+.container {
 	font-family: 'Lora', serif;
 	width: 100%;
 	height: 100%;
+	padding: 0;
+	margin-bottom: 100px;
 }
+
+h2{
+	font-size: 50px;
+}
+
+.btn {
+	background: #346CC7;
+	color: white;
+	border:1px solid #346CC7;
+	border-radius: 0px;
+}
+
+.btn:hover{
+	background:#185AC4;
+	color: white;
+	border:1px solid #185AC4;
+	border-radius: 0px;
+}
+
 
 /*
 Homepage
  */
 
+.bg1-home {
+	background-image: url('bg1.jpg');
+	background-position: 50% 50%;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	position: relative;
+	height: 700px;
+	float: left;
+	width: 100%;
+	padding-bottom: 700px;
+}
+
+.bg1-home-text {
+	margin-left: 750px;
+	margin-top: 250px;
+	width: 400px;
+	text-align: center;
+}
+
+.bg1-home-text h2{
+	color: white;
+	font-size: 50px;
+	margin-bottom: 20px;
+}
+
+.border1 {
+	height: 300px;
+	width: 100%;
+	margin-top: 700px;
+}
+
+.border1 h2,.border1 p{
+	text-align: center;
+	position:relative;
+	top:40%;
+}
+
+.border1 p {
+	font-size: 22px;
+}
+
+.bg2-home {
+	height:400px;
+	background-image: url(bg2.jpg);
+	background-position: center;
+}
+
+.border2 {
+	height: 300px;
+}
+
+.bg2-home-text {
+	width: 400px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+
+	position: relative;
+	top: 30%;
+}
+
+.bg2-home-text h2 {
+	margin-bottom: 20px;
+}
+
 /*
 About
  */
 
+.bg1-about{
+	position: relative;
+	height: 600px;
+	width: 100%;
+	float: left;
+
+	background-image: url(bg3.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.bg1-about h2{
+	text-align: center;
+	color: white;
+	margin-top: 150px;
+}
+
+.border1-about
+{
+	height: 400px;
+	min-width: 100%;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.about-helper{
+	margin-left: 400px;
+	margin-right: 400px;
+	text-align: center;
+}
+
+.about-helper *{
+	margin-bottom: 20px;
+}
+
 /*
 Signup
  */
+
+.bg-signup{
+	height: 700px;
+	background-image: url(bg4.jpg);
+	background-position: bottom;
+	width: 100%;
+	float: left;
+	position: relative;
+}
+
+.bg-signup *{
+	text-align: center;
+}
+
+.bg-signup h2{
+	color: white;
+}
 
 /*
 Footer
@@ -27,13 +173,15 @@ Footer
 .footer{
 	background-color: #E0E0EB;
 	height: 100px;
-	margin: 0;
 	float: left;
 	width: 100%;
+
+	position:relative;
+	margin-top: -100px;
 }
 
 .footer p{
 	position: relative;
-	top: 50%;
-	left: 50%;
+	text-align: center;
+	top:40%;
 }
