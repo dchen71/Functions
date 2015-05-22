@@ -1,14 +1,19 @@
 <div class="container">
 	<div class="bg-signup">
-		<h2>Get the latest updates from Stories</h2>
-		<div class="signups">
+		<a href="" id="menu"><img src="/assets/open.svg"></a>
+		
+		<div class="signup-main">
+			<h2>Get the latest updates from Stories</h2>
+			
 			<%= form_for(@signup) do |f| %>
-			<%= f.label :id  %><br> 
-    		<%= f.text_field :email, :placeholder => "Email" %> 
-    		<%= f.label :id  %><br> 
-    		<%= f.text_field :email, :placeholder => "Email" %> 
-  			<%= f.submit "Join", class:'btn' %> 
-  			<% end %>
+			<div class="signups">
+				<p id="firstname">First name</p>
+    			<%= f.text_field :firstname, :id => 'data'%><br>  
+    			<p id="email">Email</p>
+    			<%= f.text_field :email, :id => 'data'%><br>  
+  				<%= f.submit "Join", class:'submit' %> 
+			</div>
+			<% end %>
 		</div>
 	</div>
 

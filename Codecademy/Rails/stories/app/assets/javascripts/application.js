@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+	$('#menu').sidr({
+		displace:false
+	});
+})
+
+$(document).ready(function() {
+    $('#btnClose').click(function(){ // when 'btnClose' is clicked…
+        $.sidr('close', 'sidr');  // close the div with the ID of "sidr"
+    });
+});
