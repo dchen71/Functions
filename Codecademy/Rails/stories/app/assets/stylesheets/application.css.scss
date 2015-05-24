@@ -52,7 +52,7 @@ Homepage
 
 .bg1-home {
 	z-index: 1;
-	background-image: url('bg1.jpg');
+	background-image: asset-data-url('bg1.jpg');
 	background-position: 50% 50%;
 	background-size: 100%;
 	background-repeat: no-repeat;
@@ -94,7 +94,7 @@ Homepage
 
 .bg2-home {
 	height:400px;
-	background-image: url(bg2.jpg);
+	background-image: asset-data-url('bg2.jpg');
 	background-position: center;
 }
 
@@ -121,12 +121,11 @@ About
  */
 
 .bg1-about{
-	position: relative;
 	height: 600px;
 	width: 100%;
 	float: left;
 
-	background-image: url(bg3.jpg);
+	background-image: image-url('bg3.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -146,6 +145,10 @@ About
 	vertical-align: middle;
 }
 
+.test {
+	padding-top: 600px;
+}
+
 .about-helper{
 	margin-left: 400px;
 	margin-right: 400px;
@@ -162,7 +165,7 @@ Signup
 
 .bg-signup{
 	height: 700px;
-	background-image: url(bg4.jpg);
+	background-image: image-url('bg4.jpg');
 	background-position: bottom;
 	width: 100%;
 	float: left;

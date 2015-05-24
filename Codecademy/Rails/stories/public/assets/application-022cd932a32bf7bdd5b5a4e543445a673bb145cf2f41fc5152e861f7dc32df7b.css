@@ -1,0 +1,261 @@
+/*
+Global formatting
+ */
+/* line 6, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+html, body {
+  font-family: 'Lora', serif;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* line 13, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.container {
+  font-family: 'Lora', serif;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin-bottom: 100px;
+}
+
+/* line 21, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+h2 {
+  font-size: 50px;
+}
+
+/* line 25, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.btn {
+  background: #346CC7;
+  color: white;
+  border: 1px solid #346CC7;
+  border-radius: 0px;
+}
+
+/* line 32, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.btn:hover {
+  background: #185AC4;
+  color: white;
+  border: 1px solid #185AC4;
+  border-radius: 0px;
+}
+
+/*
+Homepage
+ */
+/* line 44, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.bg1-home img, .bg1-about img, .bg-signup img {
+  z-index: 2;
+  height: 24px;
+  width: 24px;
+  position: relative;
+  left: 50px;
+  top: 50px;
+}
+
+/* line 54, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.bg1-home {
+  z-index: 1;
+  background-image: url(/assets/bg1-cb6f62c5e99c0778fb8d708684fe50005a8bdb8e9f4486528098bcb99ace53b8.jpg);
+  background-position: 50% 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 700px;
+  float: left;
+  width: 100%;
+  padding-bottom: 700px;
+}
+
+/* line 67, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.bg1-home-text {
+  margin-left: 750px;
+  margin-top: 250px;
+  width: 400px;
+  text-align: center;
+}
+
+/* line 74, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.bg1-home-text h2 {
+  color: white;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+/* line 80, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.border1 {
+  height: 300px;
+  width: 100%;
+  margin-top: 700px;
+}
+
+/* line 86, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.border1 h2, .border1 p {
+  text-align: center;
+  position: relative;
+  top: 40%;
+}
+
+/* line 92, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.border1 p {
+  font-size: 22px;
+}
+
+/* line 96, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.bg2-home {
+  height: 400px;
+  background-image: url(/assets/bg2-7b0a1b7e1e8fe236a02aa14f8a520b5b34855b77ac29565ecd69af3d302688db.jpg);
+  background-position: center;
+}
+
+/* line 102, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.border2 {
+  height: 300px;
+}
+
+/* line 106, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.bg2-home-text {
+  width: 400px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: 30%;
+}
+
+/* line 116, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.bg2-home-text h2 {
+  margin-bottom: 20px;
+}
+
+/*
+About
+ */
+/* line 124, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.bg1-about {
+  position: relative;
+  height: 600px;
+  width: 100%;
+  float: left;
+  background-image: url(/assets/bg3-2ab3c82e689c5f6190e5b2b857cee185186c90fcb8e407da3e760a3473767f0b.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* line 136, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.bg1-about h2 {
+  text-align: center;
+  color: white;
+  margin-top: 150px;
+}
+
+/* line 142, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.border1-about {
+  height: 400px;
+  min-width: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* line 150, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.about-helper {
+  margin-left: 400px;
+  margin-right: 400px;
+  text-align: center;
+}
+
+/* line 156, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.about-helper * {
+  margin-bottom: 20px;
+}
+
+/*
+Signup
+ */
+/* line 164, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.bg-signup {
+  height: 700px;
+  background-image: url(/assets/bg4-e6a668231920e364f64b86f35cbb1c8a09d926d9426917edc8c21b8d67baccc5.jpg);
+  background-position: bottom;
+  width: 100%;
+  float: left;
+  position: relative;
+}
+
+/* line 173, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.signup-main {
+  margin-top: 200px;
+}
+
+/* line 177, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.signup-main h2 {
+  color: white;
+  font-weight: 100;
+  text-align: center;
+}
+
+/* line 183, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.signups {
+  text-align: left;
+}
+
+/* line 187, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.signups {
+  margin-top: 30px;
+  margin-left: 650px;
+  margin-right: 650px;
+}
+
+/* line 193, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+#data {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+/* line 198, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.signups p {
+  color: white;
+  margin-bottom: 0px;
+}
+
+/* line 203, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.signups input {
+  opacity: 0.8;
+}
+
+/* line 207, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+#email {
+  margin-right: 264px;
+}
+
+/* line 211, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+#firstname {
+  margin-right: 230px;
+}
+
+/* line 215, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.submit {
+  width: 75px;
+  height: 40px;
+  margin-right: 225px;
+}
+
+/*
+Footer
+ */
+/* line 225, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.footer {
+  background-color: #E0E0EB;
+  height: 100px;
+  float: left;
+  width: 100%;
+  position: relative;
+  margin-top: -100px;
+}
+
+/* line 235, C:/Sites/Codecademy/stories/app/assets/stylesheets/application.css.scss */
+.footer p {
+  position: relative;
+  text-align: center;
+  top: 40%;
+}

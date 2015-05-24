@@ -26,3 +26,7 @@ $(document).ready(function() {
         $.sidr('close', 'sidr');  // close the div with the ID of "sidr"
     });
 });
+
+$(document).ready(function(){
+	$('#sidr').hide();
+})
