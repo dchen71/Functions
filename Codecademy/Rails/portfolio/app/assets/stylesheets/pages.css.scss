@@ -1,26 +1,32 @@
 /*
-Welcome Page
- */
+Global
+*/
 
 html, body, {
 	font-family: 'Roboto', sans-serif;
-	
-	position: relative;
-	z-index: -1;
-	background-image: image-url("home.jpg");
-	background-size: 100%;
 	height:100%;
 	width: 100%;
 }
 
+
+/*
+Welcome Page
+ */
+
 .container{
 	font-family: 'Roboto', sans-serif;
-	height:100%;
+	
 	width: 100%;	
 }
 
-.navbar {
-
+#welcome {
+		
+	position: relative;
+	z-index: -1;
+	background-image: url(home.jpg);
+	background-size: 100%;
+	height:100%;
+	width: 100%;
 }
 
 
@@ -135,7 +141,7 @@ Portfolio
 #cont-port {
 	z-index: 1;
 	
-	background-image: image-url("bg2.jpg");
+	background-image: url(bg2.jpg);
 	background-size: 100%;
 	background-position: center;
 
@@ -223,23 +229,33 @@ Contact
  */
 
 #contact-cont {
-	z-index: 1;
-	background-color: white;
-	height:100%;
-	width: 100%;
+	padding-top: 150px;
+	padding-bottom:150px;
+	height:600px;
 }
 
-.contact h2{
+.contact-link {
+	height:300px;
+	margin: 20px 150px 20px 50px;
+}
+
+.contact-link h2{
 	float:right;
 	font-size: 50px;
 }
 
+.contact-row {
+	height: 100px;
+	margin-right:40px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
 .contact-row img {
 	width: 7%;
-	height: 7%;
+	height: 80%;
 	float:right;
-	margin-left: 30px;
-	margin-top: 80px;
-	margin-right: 80px;
+	margin-left: 100px;
+
 }
 
