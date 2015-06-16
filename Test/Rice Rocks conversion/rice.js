@@ -1,5 +1,5 @@
 //Implementation of rice rocks(An Interactive Introduction to Python) back into full javascript
-//
+
 //Global variables for user interface
 var WIDTH = 800;
 var HEIGHT = 600;
@@ -8,38 +8,43 @@ var lives = 3;
 var time = 0;
 var started = false;
 
-class ImageInfo(this, center, size, radius, lifespan, animated){ //Wonder if can declare defaults here
-	this.center = center; //Is declaring this even necessary and is this right
+
+//Image Helper prototype
+var ImageInfo = function(center,size,radius,lifespan,animated){
+	this.center = center;
 	this.size = size;
 	this.radius = radius;
-	lifespan = none; //FIgure out what none would count as
+	var lifespan = none;
+
 	if(lifespan)
 		this.lifespan = lifespan;
 	else
-		this.lifespan = float('inf') //is inf declared anywhere
+		this.lifespan = float('inf');
 	this.animated = animated;
-
-	function get_center(){
-		return this.center;
-	}
-
-	function get_size(){
-		return this.size;
-	}
-
-	function get_radius(){
-		return this.radius;
-	}
-
-	function get_lifespan(){
-		return this.lifespan;
-	}
-
-	function get_animated(){
-		return this.animated
-	}
 }
 
+ImageInfo.prototype.get_center() = function() {
+	return this.center;
+}
+
+ImageInfo.prototype.get_size() = function() {
+	return this.size;
+}
+
+ImageInfo.prototype.get_radius() = function() {
+	return this.radius;
+}
+
+ImageInfo.prototype.get_lifespan() = function() {
+	return this.lifespan;
+}
+
+ImageInfo.prototype.get_animated() = function() {
+	return this.animated;
+}
+
+
+//Simplegui prototype which uses existing naming structure to support the loading of images and sounds
 class simplegui(){
 	function load_image(dataUrl){
 		var imageObj = new Image();
