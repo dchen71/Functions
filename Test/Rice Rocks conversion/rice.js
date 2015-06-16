@@ -1,7 +1,5 @@
 //Implementation of rice rocks(An Interactive Introduction to Python) back into full javascript
-import math;
-import random;
-
+//
 //Global variables for user interface
 var WIDTH = 800;
 var HEIGHT = 600;
@@ -42,53 +40,63 @@ class ImageInfo(this, center, size, radius, lifespan, animated){ //Wonder if can
 	}
 }
 
+class simplegui(){
+	function load_image(){
+
+	}
+
+	function load_sound(){
+
+	}
+}
+
 //Image/Sound loading section
 //art assets created by Kim Lathrop, may be freely re-used in non-commercial projects, please credit Kim
 //debris images - debris1_brown.png, debris2_brown.png, debris3_brown.png, debris4_brown.png
 //                 debris1_blue.png, debris2_blue.png, debris3_blue.png, debris4_blue.png, debris_blend.png
 //need to figureout the simplegui load image
-debris_info = ImageInfo([320, 240], [640, 480])
-debris_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/debris2_blue.png")
+var debris_info = ImageInfo([320, 240], [640, 480])
+var debris_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/debris2_blue.png")
 
 // nebula images - nebula_brown.png, nebula_blue.png
-nebula_info = ImageInfo([400, 300], [800, 600])
-nebula_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/nebula_blue.f2014.png")
+var nebula_info = ImageInfo([400, 300], [800, 600])
+var nebula_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/nebula_blue.f2014.png")
 
 // splash image
-splash_info = ImageInfo([200, 150], [400, 300])
-splash_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/splash.png")
+var splash_info = ImageInfo([200, 150], [400, 300])
+var splash_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/splash.png")
 
 // ship image
-ship_info = ImageInfo([45, 45], [90, 90], 35)
-ship_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/double_ship.png")
+var ship_info = ImageInfo([45, 45], [90, 90], 35)
+var ship_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/double_ship.png")
 
 // missile image - shot1.png, shot2.png, shot3.png
-missile_info = ImageInfo([5,5], [10, 10], 3, 50)
-missile_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/shot2.png")
+var missile_info = ImageInfo([5,5], [10, 10], 3, 50)
+var missile_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/shot2.png")
 
 // asteroid images - asteroid_blue.png, asteroid_brown.png, asteroid_blend.png
-asteroid_info = ImageInfo([45, 45], [90, 90], 40)
-asteroid_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/asteroid_blue.png")
+var asteroid_info = ImageInfo([45, 45], [90, 90], 40)
+var asteroid_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/asteroid_blue.png")
 
 // animated explosion - explosion_orange.png, explosion_blue.png, explosion_blue2.png, explosion_alpha.png
-explosion_info = ImageInfo([64, 64], [128, 128], 17, 24, true)
-explosion_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/explosion_alpha.png")
+var explosion_info = ImageInfo([64, 64], [128, 128], 17, 24, true)
+var explosion_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/explosion_alpha.png")
 
 // sound assets purchased from sounddogs.com, please do not redistribute
 // .ogg versions of sounds are also available, just replace .mp3 by .ogg
 //need to figure out the load sound and set volume
-soundtrack = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/soundtrack.mp3")
-missile_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/missile.mp3")
-missile_sound.set_volume(.5)
-ship_thrust_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.mp3")
-explosion_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/explosion.mp3")
+var soundtrack = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/soundtrack.mp3")
+var missile_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/missile.mp3")
+var missile_sound.set_volume(.5)
+var ship_thrust_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.mp3")
+var explosion_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/explosion.mp3")
 
 // helper functions to handle transformations
 function angle_to_vector(ang)
-    return [math.cos(ang), math.sin(ang)]
+    return [Math.cos(ang), Math.sin(ang)]
 
 function dist(p, q)
-    return math.sqrt((p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2)
+    return Math.sqrt((p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2)
 
 //Does group to object collision check
 function group_collide(group, other_Object)
@@ -116,6 +124,7 @@ function group_group_collide(group, other_Group)
     }
         
     return hit;
+
 
 //Supports group sprite processing
 function process_sprite_group(spriteSet, canvas):
@@ -346,11 +355,11 @@ function rock_spawner(){
     global rock_group, started;
     if started{
         if(len(rock_group) <= 12){
-            rock_pos = [random.randrange(0, WIDTH), random.randrange(0, HEIGHT)];
-            rock_vel = [random.random() * .6 - .3, random.random() * .6 - .3];
-            rock_avel = random.random() * .2 - .1;
+            rock_pos = [Math.random() * WIDTH, Math.random() * HEIGHT];
+            rock_vel = [Math.random() * .6 - .3, Math.random() * .6 - .3];
+            rock_avel = Math.random() * .2 - .1;
             while(dist(rock_pos, my_ship.pos) < 150){
-                rock_pos = [random.randrange(0, WIDTH), random.randrange(0, HEIGHT)];
+                rock_pos = [Math.random() *  WIDTH, Math.random() *  HEIGHT];
             }
             a_rock = Sprite(rock_pos, rock_vel, 0, rock_avel, asteroid_image, asteroid_info);
             rock_group.add(a_rock);
