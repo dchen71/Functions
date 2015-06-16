@@ -23,41 +23,41 @@ var ImageInfo = function(center,size,radius,lifespan,animated){
 	this.animated = animated;
 }
 
-ImageInfo.prototype.get_center() = function() {
-	return this.center;
-}
-
-ImageInfo.prototype.get_size() = function() {
-	return this.size;
-}
-
-ImageInfo.prototype.get_radius() = function() {
-	return this.radius;
-}
-
-ImageInfo.prototype.get_lifespan() = function() {
-	return this.lifespan;
-}
-
-ImageInfo.prototype.get_animated() = function() {
-	return this.animated;
-}
+	ImageInfo.prototype.get_center() = function() {
+		return this.center;
+	}
+	
+	ImageInfo.prototype.get_size() = function() {
+		return this.size;
+	}
+	
+	ImageInfo.prototype.get_radius() = function() {
+		return this.radius;
+	}
+	
+	ImageInfo.prototype.get_lifespan() = function() {
+		return this.lifespan;
+	}
+	
+	ImageInfo.prototype.get_animated() = function() {
+		return this.animated;
+	}
 
 
 //Simplegui prototype which uses existing naming structure to support the loading of images and sounds
 var simplegui = function() {}
 
-simplegui.prototype.load_image = function(dataUrl){
-	var imageObj = new Image();
-	imageObj.onload = function(){
-		context.drawImage(this,0,0)
+	simplegui.prototype.load_image = function(dataUrl){
+		var imageObj = new Image();
+		imageObj.onload = function(){
+			context.drawImage(this,0,0)
+		}
 	}
-}
-
-simplegui.prototype.load_sound(dataUrl) = function(dataUrl){
-	var snd = new Audio(dataUrl);
-	snd.play();	
-}
+	
+	simplegui.prototype.load_sound(dataUrl) = function(dataUrl){
+		var snd = new Audio(dataUrl);
+		snd.play();	
+	}
 
 
 //Image/Sound loading section
@@ -159,6 +159,16 @@ var Ship = function(pos,vel,angle,image,info){
     this.image_size = info.get_size();
     this.radius = info.get_radius();	
 }
+
+//need to deal with the sound
+Ship.prototype.set_thrust = function(on){
+	this.thrust = on;
+	if on{
+		ship_thrust_sound.rewind();
+		ship_thrust_sound.play();
+       }
+       else
+		ship_thrust_sound.pause();}
 class Ship (pos, vel, angle, image, info){
 
         
@@ -188,16 +198,6 @@ class Ship (pos, vel, angle, image, info){
         this.vel[0] *= .99;
         this.vel[1] *= .99;
 
-    function set_thrust(on){
-		this.thrust = on;
-		if on{
-			ship_thrust_sound.rewind();
-			ship_thrust_sound.play();
-        }
-        else
-			ship_thrust_sound.pause();
-	}
-
 	function increment_angle_vel(){
         this.angle_vel += .05;
 	}
@@ -226,23 +226,40 @@ class Ship (pos, vel, angle, image, info){
 }
 
 // Sprite class
+var Sprite = function(pos, vel, ang, ang_vel, image, info, sound = None){
+    this.pos = [pos[0],pos[1]];
+    this.vel = [vel[0],vel[1]];
+    this.init_vel = [vel[0],vel[1]];
+    this.angle = ang;
+    this.angle_vel = ang_vel;
+    this.image = image;
+    this.image_center = info.get_center();
+    this.image_size = info.get_size();
+    this.radius = info.get_radius();
+    this.lifespan = info.get_lifespan();
+    this.animated = info.get_animated();
+    this.age = 0;
+    if sound{
+        sound.rewind();
+        sound.play();
+    }	
+}
+
+	Sprite.prototype.get_position = function(){
+		return this.pos;
+	}
+	
+	Sprite.prototype.get_radius = function(){
+		return this.radius;
+	}
+	
+	//Checks if it collides and returns true if true
+	Sprite.prototype.collide = function(other_Object){
+	    return dist(this.pos, other_Object.pos) <= this.radius + other_Object.radius;	
+	}
+
 class Sprite(pos, vel, ang, ang_vel, image, info, sound = None){
-        this.pos = [pos[0],pos[1]];
-        this.vel = [vel[0],vel[1]];
-        this.init_vel = [vel[0],vel[1]];
-        this.angle = ang;
-        this.angle_vel = ang_vel;
-        this.image = image;
-        this.image_center = info.get_center();
-        this.image_size = info.get_size();
-        this.radius = info.get_radius();
-        this.lifespan = info.get_lifespan();
-        this.animated = info.get_animated();
-        this.age = 0;
-        if sound{
-            sound.rewind();
-            sound.play();
-        }
+
 
     function draw(canvas){
         center = list(this.image_center)
@@ -267,15 +284,6 @@ class Sprite(pos, vel, ang, ang_vel, image, info, sound = None){
             return false;
     }
 
-    function get_position(this)
-        return this.pos;
-    
-    function get_radius(this)
-        return this.radius;
-        
-        //Checks if it collides and returns true if true
-    function collide(this, other_Object)
-        return dist(this.pos, other_Object.pos) <= this.radius + other_Object.radius;
 }    
 
 // key handlers to control ship   
