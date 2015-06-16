@@ -65,41 +65,43 @@ simplegui.prototype.load_sound(dataUrl) = function(dataUrl){
 //debris images - debris1_brown.png, debris2_brown.png, debris3_brown.png, debris4_brown.png
 //                 debris1_blue.png, debris2_blue.png, debris3_blue.png, debris4_blue.png, debris_blend.png
 //need to figureout the simplegui load image
-var debris_info = ImageInfo([320, 240], [640, 480])
-var debris_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/debris2_blue.png")
+var debris_info = ImageInfo([320, 240], [640, 480]);
+var debris_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/debris2_blue.png");
 
 // nebula images - nebula_brown.png, nebula_blue.png
-var nebula_info = ImageInfo([400, 300], [800, 600])
-var nebula_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/nebula_blue.f2014.png")
+var nebula_info = ImageInfo([400, 300], [800, 600]);
+var nebula_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/nebula_blue.f2014.png");
 
 // splash image
-var splash_info = ImageInfo([200, 150], [400, 300])
-var splash_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/splash.png")
+var splash_info = ImageInfo([200, 150], [400, 300]);
+var splash_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/splash.png");
 
 // ship image
-var ship_info = ImageInfo([45, 45], [90, 90], 35)
-var ship_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/double_ship.png")
+var ship_info = ImageInfo([45, 45], [90, 90], 35);
+var ship_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/double_ship.png");
 
 // missile image - shot1.png, shot2.png, shot3.png
-var missile_info = ImageInfo([5,5], [10, 10], 3, 50)
-var missile_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/shot2.png")
+var missile_info = ImageInfo([5,5], [10, 10], 3, 50);
+var missile_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/shot2.png");
 
 // asteroid images - asteroid_blue.png, asteroid_brown.png, asteroid_blend.png
-var asteroid_info = ImageInfo([45, 45], [90, 90], 40)
-var asteroid_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/asteroid_blue.png")
+var asteroid_info = ImageInfo([45, 45], [90, 90], 40);
+var asteroid_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/asteroid_blue.png");
 
 // animated explosion - explosion_orange.png, explosion_blue.png, explosion_blue2.png, explosion_alpha.png
-var explosion_info = ImageInfo([64, 64], [128, 128], 17, 24, true)
-var explosion_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/explosion_alpha.png")
+var explosion_info = ImageInfo([64, 64], [128, 128], 17, 24, true);
+var explosion_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/explosion_alpha.png");
 
 // sound assets purchased from sounddogs.com, please do not redistribute
 // .ogg versions of sounds are also available, just replace .mp3 by .ogg
 //need to figure out the load sound and set volume
-var soundtrack = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/soundtrack.mp3")
-var missile_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/missile.mp3")
-var missile_sound.set_volume(.5)
-var ship_thrust_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.mp3")
-var explosion_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/explosion.mp3")
+var soundtrack = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/soundtrack.mp3");
+var missile_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/missile.mp3");
+var missile_sound.set_volume(0.5);
+//var select element
+//ele.volume = 0.2
+var ship_thrust_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.mp3");
+var explosion_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/explosion.mp3");
 
 // helper functions to handle transformations
 function angle_to_vector(ang)
@@ -146,16 +148,19 @@ function process_sprite_group(spriteSet, canvas):
             
 
 // Ship class
+var Ship = function(pos,vel,angle,image,info){
+    this.pos = [pos[0], pos[1]];
+    this.vel = [vel[0], vel[1]];
+    this.thrust = false;
+    this.angle = angle;
+    this.angle_vel = 0;
+    this.image = image;
+    this.image_center = info.get_center();
+    this.image_size = info.get_size();
+    this.radius = info.get_radius();	
+}
 class Ship (pos, vel, angle, image, info){
-        this.pos = [pos[0], pos[1]];
-        this.vel = [vel[0], vel[1]];
-        this.thrust = false;
-        this.angle = angle;
-        this.angle_vel = 0;
-        this.image = image;
-        this.image_center = info.get_center();
-        this.image_size = info.get_size();
-        this.radius = info.get_radius();
+
         
     function draw(canvas){
     	if this.thrust:
