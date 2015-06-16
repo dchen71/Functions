@@ -45,19 +45,20 @@ ImageInfo.prototype.get_animated() = function() {
 
 
 //Simplegui prototype which uses existing naming structure to support the loading of images and sounds
-class simplegui(){
-	function load_image(dataUrl){
-		var imageObj = new Image();
-		imageObj.onload = function(){
-			context.drawImage(this,0,0)
-		}
-	}
+var simplegui = function() {}
 
-	function load_sound(dataUrl){
-		var snd = new Audio(dataUrl);
-		snd.play();
+simplegui.prototype.load_image = function(dataUrl){
+	var imageObj = new Image();
+	imageObj.onload = function(){
+		context.drawImage(this,0,0)
 	}
 }
+
+simplegui.prototype.load_sound(dataUrl) = function(dataUrl){
+	var snd = new Audio(dataUrl);
+	snd.play();	
+}
+
 
 //Image/Sound loading section
 //art assets created by Kim Lathrop, may be freely re-used in non-commercial projects, please credit Kim
