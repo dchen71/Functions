@@ -41,12 +41,16 @@ class ImageInfo(this, center, size, radius, lifespan, animated){ //Wonder if can
 }
 
 class simplegui(){
-	function load_image(){
-
+	function load_image(dataUrl){
+		var imageObj = new Image();
+		imageObj.onload = function(){
+			context.drawImage(this,0,0)
+		}
 	}
 
-	function load_sound(){
-
+	function load_sound(dataUrl){
+		var snd = new Audio(dataUrl);
+		snd.play();
 	}
 }
 
