@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/eggplant/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+
+<style>
+#accordion-resizer {
+	padding: 10px;
+	width: 600px;
+	height: 100%;
+}
+</style>
+
+<script>
+$(function() {
+	$( "#accordion" ).accordion({
+		collapsible: true,
+		heightStyle: "content"
+		});
+	});
+$(function() {
+	$( "#accordion-resizer" ).resizable({
+	minHeight: 240,
+	minWidth: 300,
+	resize: function() {
+		$( "#accordion" ).accordion( "refresh" );
+	}
+	});
+	var start = 0;
+	//Just a button, could remove as its for testing
+	$( "button.robot" ).button()
+	.click(function() {
+		builder(start);
+		//Unclear if this is actually do +=1
+		start += 1;
+	});
+});
+
+function saveSys()
+{
+	if(typeof(Storage)!=="undefined")
+	  	{
+		// Saves data in testVar
+			localStorage.setItem('save', copier());
+		}
+		// If browser dont support it, then can't save
+		else
+		{
+		//If tacking on, probably ignore it or something since it can't save anyways
+			alert("Sorry, your browser does not support web storage");
+		}
+}
+function loadSys()
+{
+//Checks if there is a save called save
+if(localStorage.getItem("save") != null)
+  	{
+// Loads data from variable save and replaces the body
+		document.body.innerHTML = localStorage.getItem("save");
+  	}
+// If browser dont support it, then can't save/load
+else
+	{
+		alert("Sorry, no saves detected");
+	}
+}
+
+//Builds the extra tabs
+function builder($start)
+{
+//Append just adds the body, might be a more efficient way to add this in
+//Load loads data, figure out how to integrate from the loader backend
+	$(document.getElementById("accordion")).append('<h[$start]></h[$start]><div><p></p></div>');
+
+//Loads data parsed from the .story in the spacecrabmeat into p
+	$("p").load('node1.node .story');
+
+
+//Reloads the accordion after all this work has been done
+	$('#accordion').accordion("refresh");
+
+//Refocuses on the newest panel
+	$("#accordion" ).accordion( "option", "active", $start );
+}
+
+
+function copier()
+{
+	var screenCopy = $('body').clone().html();
+    return screenCopy;
+}
+</script>
+</head>
+
+<body>
+<button class = "robot">Click to build accordions</button>
+
+<z><button onclick="saveSys()" type="button">Save</button></z>
+<div id="sResult"></div>
+<z>This is a test saving system.</z>
+
+<z><button onclick="loadSys()" type="button">Load</button></z>
+<div id="lResult"></div>
+	<z>This is a test loading system.</z>
+	
+	
+	<div id="accordion-resizer" class="ui-widget-content">
+		<div id="accordion">
+			<h[$start]></h[$start]><div>
+			<p>Catnip</p>
+			<p>Cats</p>
+			<a href = 'www.yahoo.com'>Dog</a>
+		</div>
+	</div>
+</div>
+
+
+
+</body>
+</html>
