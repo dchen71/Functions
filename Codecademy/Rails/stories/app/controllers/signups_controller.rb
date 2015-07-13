@@ -13,7 +13,7 @@ class SignupsController < ApplicationController
 	end
 
 	def thanks
-
+		@signup = Signup.last
 	end
 
 	private

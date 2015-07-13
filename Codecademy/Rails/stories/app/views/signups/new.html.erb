@@ -8,9 +8,9 @@
 			<%= form_for(@signup) do |f| %>
 			<div class="signups">
 				<p id="firstname">First name</p>
-    			<%= f.text_field :firstname, :id => 'data'%><br>  
+    			<%= f.text_field :firstname, :id => 'data', required: true%><br>  
     			<p id="email">Email</p>
-    			<%= f.text_field :email, :id => 'data'%><br>  
+    			<%= f.email_field :email, :id => 'data', required:true%><br>  
   				<%= f.submit "Join", class:'submit' %> 
 			</div>
 			<% end %>
