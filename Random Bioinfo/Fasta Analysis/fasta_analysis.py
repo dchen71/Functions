@@ -1,15 +1,16 @@
+#Loads modules from BioPython
 from Bio import SeqIO
 
-for seq_record in SeqIO.parse("dna.example.fasta", "fasta"):
-	print(seq_record.id)
-	print(repr(seq_record.seq))
-	print(len(seq_record))
+#Reads the fasta file
+fasta = SeqIO.parse("dna.example.fasta", "fasta")
+
+#Converts the fasta file into dictionary entries
+sequences = {}
+for seq_record in fasta:
+	sequences[seq_record.id] = repr(seq_record.seq)
 
 #Reads number of fasta records in a file
-
-test = {'cat': 'dog'}
-print(test['cat'])
-
+print("Number of Records : " + str(len(sequences)))
 
 #Finds the length of each seqeunce in a file
 
