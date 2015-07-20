@@ -49,12 +49,40 @@ def total_kmer(kmers):
 				total_kmer[kmer] += counts
 	return total_kmer
 
-print(total_kmer(kmers))
+total_kmer = total_kmer(kmers)
+
+#Finds the highest occuring number of kmer within the fasta sequences
+def highest_kmer(kmers):
+	high = 0
+	for i in kmers:
+		for key,value in i.items():
+			for kmer, counts in value.items():
+				if counts > high:
+					high = counts
+	return high
+
+highest = highest_kmer(kmers)
 
 #Finds the most frequently occuring repeat of length n in all sequences
-def freq_kmer(n=1):
-	pass
+def freq_kmer(kmers):
+	high = 0
+	for key, value in kmers.items():
+		if value > high:
+			high = value
+	return value
 
-#Finds the number of different occurences of length n kmers 
-def diff_max(n=1):
-	pass
+most_freq = freq_kmer(total_kmer)
+print('Most Frequent between all sequences: '+ str(most_freq))
+
+#Finds the number of different max occurence of length n kmers 
+def diff_max(highest, kmers):
+	count = 0
+	for i in kmers:
+		for key,value in i.items():
+			for kmer, counts in value.items():
+				if counts == highest:
+					count += 1
+	return count
+
+print('Most Frequent highest: ' + str(diff_max(highest,kmers)))
+
