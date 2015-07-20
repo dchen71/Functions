@@ -22,7 +22,7 @@ print("Shortest sequence: " + str(min(length)))
 for key,value in sequences.items():
 	pass
 
-#Finds repeats of length n in a sequence of DNA
+#Finds repeats of length n in the dictionary of values from fasta reads
 def repeat(n=1):
 	fasta_seq = []
 	for key, value in sequences.items():
@@ -37,4 +37,24 @@ def repeat(n=1):
 		fasta_seq.append(entry)
 	return fasta_seq
 
-print(repeat(2))
+kmers = repeat(6)
+
+#Finds the total number of occurences in a series of fasta strings
+def total_kmer(kmers):
+	total_kmer = {}
+	for i in kmers:
+		for key,value in i.items():
+			for kmer, counts in value.items():
+				total_kmer.setdefault(kmer, 0)
+				total_kmer[kmer] += counts
+	return total_kmer
+
+print(total_kmer(kmers))
+
+#Finds the most frequently occuring repeat of length n in all sequences
+def freq_kmer(n=1):
+	pass
+
+#Finds the number of different occurences of length n kmers 
+def diff_max(n=1):
+	pass
