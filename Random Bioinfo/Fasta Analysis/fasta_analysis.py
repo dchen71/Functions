@@ -19,8 +19,21 @@ print("Longest seqeunce: " + str(max(length)))
 print("Shortest sequence: " + str(min(length)))
 
 #Finds the open reading frames in each DNA sequence in a fasta
-for key,value in sequences.items():
-	pass
+def orf(seq):
+	for key, value in sequences.items():
+		start = 0
+		if value.seq.find('ATG', start) != -1:
+			while(value.seq.find('ATG',start) != -1):
+				TAA = value.seq.find('TAA', start)
+				TAG = value.seq.find('TAG', start)
+				TGA = value.seq.find('TGA', start)
+				if TAA != -1 or TAG != -1 or TGA != -1:
+					break;
+			
+			#if value.seq.find('TAA') != -1 or value.seq.find('TAG') != -1 or value.seq.find('TGA') != -1:
+			#	pass
+
+orf(sequences)
 
 #Finds repeats of length n in the dictionary of values from fasta reads
 def repeat(n=1):
@@ -86,3 +99,7 @@ def diff_max(highest, kmers):
 
 print('Most Frequent highest: ' + str(diff_max(highest,kmers)))
 
+#Checks if a kmer is in a kmer list and returns the counts
+def kmer_in(kmer, kmers):
+	if kmer in kmers:
+		return kmers[kmer]
