@@ -42,21 +42,24 @@ def orf(seq):
 				if TAA != -1:
 					if value.seq[start:start + 3] == 'ATG':
 						kmer = str(value.seq[start:TAA + 3])
-						kmers.append(kmer)
-						kmers_start.append(start)
-						kmers_length.append(len(kmer))
+						if len(kmer) % 3 == 0:
+							kmers.append(kmer)
+							kmers_start.append(start)
+							kmers_length.append(len(kmer))
 				elif TAG != -1:
 					if value.seq[start:start + 3] == 'ATG':
 						kmer = str(value.seq[start:TAG + 3])
-						kmers.append(kmer)
-						kmers_start.append(start)
-						kmers_length.append(len(kmer))
+						if len(kmer) % 3 == 0:
+							kmers.append(kmer)
+							kmers_start.append(start)
+							kmers_length.append(len(kmer))
 				elif TGA != -1:
 					if value.seq[start:start + 3] == 'ATG':
 						kmer = str(value.seq[start:TGA + 3])
-						kmers.append(kmer)
-						kmers_start.append(start)
-						kmers_length.append(len(kmer))
+						if len(kmer) % 3 == 0:
+							kmers.append(kmer)
+							kmers_start.append(start)
+							kmers_length.append(len(kmer))
 				start += 1
 
 		orf_length.setdefault(key, "")
