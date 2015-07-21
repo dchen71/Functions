@@ -19,61 +19,56 @@ print("Longest seqeunce: " + str(max(length)))
 print("Shortest sequence: " + str(min(length)))
 
 #Finds the open reading frames in each DNA sequence in a fasta
+
+#Switch function to search stop codons backwards
 def orf(seq):
-	#set key as itself, values = orf
 	orf = {}
+	orf_length = {}
+	orf_pos = {}
 	for key, value in sequences.items():
 		start = 0
 		stop = 3
 		kmers = []
+		kmers_length = []
+		kmers_start = []
 		if value.seq.find('ATG', start) != -1:
 			start = value.seq.find('ATG', start)
-			while(value.seq.find('ATG', start) != -1):
-				start = value.seq.find('ATG', start)
+			while(start < len(value)):
+
 				TAA = value.seq.find('TAA', start)
 				TAG = value.seq.find('TAG', start)
 				TGA = value.seq.find('TGA', start)
 				
-				#Logic to determine lowest index for stop codon
-				if TAA == -1:
-					if TAG == -1 and TGA != -1:
-						stop = TGA
-					elif TGA == -1 and TAG != -1:
-						stop = TAG
-					elif TGA == -1 and TAG == -1:
-						break;
-					else:
-						stop = min(TAG,TGA)
-				elif TAG == -1:
-					if TAA == -1 and TGA != -1:
-						stop = TGA
-					elif TGA == -1 and TAA != -1:
-						stop = TAA
-					elif TGA == -1 and TAA == -1:
-						break;
-					else:
-						stop = min(TAA,TGA)
-				elif TGA == -1:
-					if TAA == -1 and TAG != -1:
-						stop = TAG
-					elif TAG ==-1 and TAA != -1:
-						stop = TAA
-					elif TAA == -1 and TAG == -1:
-						break;
-					else:
-						stop = min(TAA,TAG)
-				else:
-					stop = min(TAA, TAG, TGA)
-				stop += 3
-				if (stop - start) >= 6:
-					kmer = str(value.seq[start:stop])
-					kmers.append(kmer)
+				if TAA != -1:
+					if value.seq[start:start + 3] == 'ATG':
+						kmer = str(value.seq[start:TAA + 3])
+						kmers.append(kmer)
+						kmers_start.append(start)
+						kmers_length.append(len(kmer))
+				elif TAG != -1:
+					if value.seq[start:start + 3] == 'ATG':
+						kmer = str(value.seq[start:TAG + 3])
+						kmers.append(kmer)
+						kmers_start.append(start)
+						kmers_length.append(len(kmer))
+				elif TGA != -1:
+					if value.seq[start:start + 3] == 'ATG':
+						kmer = str(value.seq[start:TGA + 3])
+						kmers.append(kmer)
+						kmers_start.append(start)
+						kmers_length.append(len(kmer))
+				start += 1
 
-				start = stop
+		orf_length.setdefault(key, "")
+		orf_pos.setdefault(key, "")
 		orf.setdefault(key, "")
 		orf[key] = kmers
+		orf_length[key] = kmers_length
+		orf_pos[key] = kmers_start
 	return orf
-print(orf(sequences))
+
+orf = orf(sequences)
+print(orf)
 
 #Finds repeats of length n in the dictionary of values from fasta reads
 def repeat(n=1):
