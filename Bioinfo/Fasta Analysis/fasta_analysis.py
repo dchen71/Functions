@@ -46,14 +46,14 @@ def orf(seq):
 							kmers.append(kmer)
 							kmers_start.append(start)
 							kmers_length.append(len(kmer))
-				elif TAG != -1:
+				if TAG != -1:
 					if value.seq[start:start + 3] == 'ATG':
 						kmer = str(value.seq[start:TAG + 3])
 						if len(kmer) % 3 == 0:
 							kmers.append(kmer)
 							kmers_start.append(start)
 							kmers_length.append(len(kmer))
-				elif TGA != -1:
+				if TGA != -1:
 					if value.seq[start:start + 3] == 'ATG':
 						kmer = str(value.seq[start:TGA + 3])
 						if len(kmer) % 3 == 0:
