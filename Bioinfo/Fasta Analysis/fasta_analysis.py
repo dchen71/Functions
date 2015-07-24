@@ -31,28 +31,15 @@ def orf(seq):
 			start = value.seq.find('ATG', start)
 			while(start < len(value)):
 
-				TAA = value.seq.find('TAA', start)
-				TAG = value.seq.find('TAG', start)
-				TGA = value.seq.find('TGA', start)
-				
-				if TAA != -1:
-					if value.seq[start:start + 3] == 'ATG':
-						kmer = str(value.seq[start:TAA + 3])
-						if len(kmer) % 3 == 0:
-							kmers.append(kmer)
-							kmers_length.append(len(kmer))
-				if TAG != -1:
-					if value.seq[start:start + 3] == 'ATG':
-						if len(kmer) % 3 == 0:
-							kmer = str(value.seq[start:TAG + 3])
-							kmers.append(kmer)
-							kmers_length.append(len(kmer))
-				if TGA != -1:
-					if value.seq[start:start + 3] == 'ATG':
-						kmer = str(value.seq[start:TGA + 3])
-						if len(kmer) % 3 == 0:
-							kmers.append(kmer)
-							kmers_length.append(len(kmer))
+				for codon in ('TAA','TAG','TGA'):
+					stop_codon = value.seq.find(codon, start)
+					if stop_codon != -1:
+						if value.seq[start:start + 3] == 'ATG':
+							kmer = str(value.seq[start:stop_codon + 3])
+							if len(kmer) % 3 == 0:
+								kmers.append(kmer)
+								kmers_length.append(len(kmer))
+
 				start += 1
 
 		orf_length.setdefault(key, "")
@@ -62,6 +49,8 @@ def orf(seq):
 	return orf
 
 orf = orf(sequences)
+print('')
+print('ORF')
 print(orf)
 
 #Finds the open reading frames index in each DNA sequence in a fasta, 5' to 3' only
@@ -75,31 +64,22 @@ def orf_pos(seq):
 			start = value.seq.find('ATG', start)
 			while(start < len(value)):
 
-				TAA = value.seq.find('TAA', start)
-				TAG = value.seq.find('TAG', start)
-				TGA = value.seq.find('TGA', start)
+				for codon in ('TAA','TAG','TGA'):
+					stop_codon = value.seq.find(codon, start)
+					if stop_codon != -1:
+						if value.seq[start:start + 3] == 'ATG':
+							kmer = str(value.seq[start:stop_codon + 3])
+							if len(kmer) % 3 == 0:
+								kmers_start.append(start)
 
-				if TAA != -1:
-					if value.seq[start:start + 3] == 'ATG':
-						kmer = str(value.seq[start:TAA + 3])
-						if len(kmer) % 3 == 0:
-							kmers_start.append(start)
-				if TAG != -1:
-					if value.seq[start:start + 3] == 'ATG':
-						kmer = str(value.seq[start:TAG + 3])
-						if len(kmer) % 3 == 0:
-							kmers_start.append(start)
-				if TGA != -1:
-					if value.seq[start:start + 3] == 'ATG':
-						kmer = str(value.seq[start:TGA + 3])
-						if len(kmer) % 3 == 0:
-							kmers_start.append(start)
 				start += 1
 
 		orf_pos.setdefault(key, "")
 		orf_pos[key] = kmers_start
 	return orf_pos
 
+print('')
+print('ORF index')
 print(orf_pos(sequences))
 
 #Finds the open reading frames kmer lengths in each DNA sequence in a fasta, 5' to 3' only
@@ -115,6 +95,8 @@ def orf_length(orf):
 		orf_len[key] = kmers_len
 	return orf_len
 
+print('')
+print('ORF Length')
 print(orf_length(orf))
 
 #Finds repeats of length n in the dictionary of values from fasta reads
