@@ -7,9 +7,11 @@
 			
 			<%= form_for(@signup) do |f| %>
 			<div class="signups">
-				<p id="firstname">First name</p>
+				<%= f.label "First name", id: "firstname" %>
+				<br>
     			<%= f.text_field :firstname, :id => 'data', required: true%><br>  
-    			<p id="email">Email</p>
+    			<%= f.label "Email", id: "email" %>
+    			<br>
     			<%= f.email_field :email, :id => 'data', required:true%><br>  
   				<%= f.submit "Join", class:'submit' %> 
 			</div>

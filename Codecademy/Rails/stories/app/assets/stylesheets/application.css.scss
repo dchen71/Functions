@@ -15,6 +15,7 @@ html, body {
 	height: 100%;
 	padding: 0;
 	margin-bottom: 100px;
+	top: 0%;
 }
 
 h2{
@@ -53,20 +54,20 @@ Homepage
 .bg1-home {
 	z-index: 1;
 	background-image: asset-data-url('bg1.jpg');
-	background-position: 50% 50%;
-	background-size: 100%;
+	background-position: 10% 50%;
+	background-size: auto;
 	background-repeat: no-repeat;
-	position: relative;
-	height: 700px;
-	float: left;
+	height: 75%;
 	width: 100%;
-	padding-bottom: 700px;
+	padding-bottom: 20%;
+	top: 0%;
 }
 
 .bg1-home-text {
-	margin-left: 750px;
-	margin-top: 250px;
-	width: 400px;
+	position: relative;
+	top: 10%;
+	margin-left: 40%;
+	width: 30%;
 	text-align: center;
 }
 
@@ -77,9 +78,11 @@ Homepage
 }
 
 .border1 {
-	height: 300px;
+	position: relative;
+	height: 30%;
 	width: 100%;
-	margin-top: 700px;
+	padding-top: 10%;
+	padding-bottom: 10%;
 }
 
 .border1 h2,.border1 p{
@@ -150,8 +153,9 @@ About
 }
 
 .about-helper{
-	margin-left: 400px;
-	margin-right: 400px;
+	width:100%;
+	padding-left: 20%;
+	padding-right: 20%;
 	text-align: center;
 }
 
@@ -188,8 +192,8 @@ Signup
 
 .signups{
 	margin-top: 30px;
-	margin-left: 650px;
-	margin-right: 650px;
+	padding-left: 30%;
+	padding-right: 20%;
 }
 
 #data{
@@ -197,7 +201,7 @@ Signup
 	margin-bottom: 20px;
 }
 
-.signups p{
+.signups label{
 	color: white;
 	margin-bottom: 0px;
 }
@@ -206,18 +210,9 @@ Signup
 	opacity: 0.8;
 }
 
-#email {
-	margin-right: 264px;
-}
-
-#firstname{
-	margin-right: 230px;
-}
-
 .submit {
 	width: 75px;
 	height: 40px;
-	margin-right: 225px;
 }
 
 /*
