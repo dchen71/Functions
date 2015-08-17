@@ -7,11 +7,14 @@ def solution(A):
     if len(A) == 0:
         answer = 1
     elif len(A) == 1:
-        answer = 2
+        answer = 1
     else:
-        for i in range(len(A)):
-            if start == sorted(A)[i]:
+        sorted_arr = sorted(A)
+        for i in sorted_arr:
+            if start == i:
                 start += 1
+                if start == len(sorted_arr):
+                    answer = start + 1
             else:
                 answer = start
                 break
