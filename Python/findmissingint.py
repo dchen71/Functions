@@ -7,7 +7,10 @@ def solution(A):
     if len(A) == 0:
         answer = 1
     elif len(A) == 1:
-        answer = 1
+        if A == 1:
+            answer = 1
+        else:
+            answer = 2
     else:
         sorted_arr = sorted(A)
         for i in sorted_arr:
