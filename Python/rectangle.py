@@ -54,8 +54,21 @@ def overlap(A,B):
                 in_y2 = A_y2
             else:
                 print('mm')
-        else:
+        elif B_y1 > A_y1:
             print('tgbb')
+            in_y1 = A_y1
+            if B_y2 <= A_y2:
+                in_y2 = A_y2
+                print('wazop')
+            elif B_y2 > A_y2:
+                in_y2 = B_y2
+                print('cao')
+            print(B_y2)
+            print(A_y2)
+            print(in_y1)
+            print(in_y2)
+            print(in_x1)
+            print(in_x2)
 
         overlap = area([[in_x1, in_y1], [in_x2, in_y2]])
     else:
@@ -68,7 +81,7 @@ def area(A):
     return abs((A[0][0] - A[1][0]) * (A[0][1] - A[1][1]))
 
 rect1 = [[1,2],[4,-5]]
-rect2 = [[2,2],[5,-7]]
+rect2 = [[3,4],[7,-6]]
 print(overlap(rect1,rect2))
 
 
@@ -80,6 +93,11 @@ assert overlap([[1,2],[4,-5]],[[2,2],[3,-4]]) == 6 #Rectangle B stretches inside
 assert overlap([[1,2],[4,-5]],[[2,2],[3,3]]) == 0 #Rectangle B touchs but is not in A
 assert overlap([[1,2],[4,-5]],[[2,2],[5,1]]) == 2 #Rectangle B stretches to the right past A
 assert overlap([[1,2],[4,-5]],[[2,2],[5,-7]]) == 14 #Rectangle B stretches to bottom right
+assert overlap([[1,2],[4,-5]],[[3,4],[7,1]]) == 1 #Part of a corner of B is in A
+assert overlap([[1,2],[4,-5]],[[3,4],[7,-6]]) == 7 #Diagonal cuts through right part of rectangle A
+assert overlap([[1,2],[4,-5]],[[-1,4],[2,1]]) == 1 #Part of a corner with diag is in A
+assert overlap([[1,2],[4,-5]],[[-1,-1],[2,3]]) == 2 #Retangle B stretches into A from the left
+assert overlap([[1,2],[4,-5]],[[-1,-4],[2,-6]]) == 1 #Rectangle B intersects from left
 assert overlap([[1,5],[8,50]],[[-2,-2],[-5,-10]]) == 0 #Rectangles are not where close to each other
 assert overlap('cat','dog') == 0 #Ensures only a list as the paramters
 assert overlap([],[1,2]) == 0 #Ensures no empty lists
