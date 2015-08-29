@@ -46,16 +46,17 @@ def overlap(A,B):
             in_x2 = B_x2
         if A_y1 >= B_y1 & B_y1 >= A_y2: #Top of B fits in
             in_y1 = A_y1
-            if B_y2 >= A_y2 & B_y2 < A_y1: #Assuming rectangle B completely fits inside
-                in_y2 = B_y2
+            if B_y2 >= A_y2: 
+                if B_y2 < A_y1: #Assuming rectangle B completely fits inside
+                    in_y2 = B_y2
             elif B_y2 <= A_y2: #Assuming x coords fit inside but y at bottom juts out
+                print('here')
                 in_y2 = A_y2
             else:
                 print('mm')
-        elif A_y1 >= B_y1 & B_y1 >= A_y2:
-            print('tbda')
         else:
             print('tgbb')
+
         overlap = area([[in_x1, in_y1], [in_x2, in_y2]])
     else:
         print('tbd')
@@ -67,7 +68,7 @@ def area(A):
     return abs((A[0][0] - A[1][0]) * (A[0][1] - A[1][1]))
 
 rect1 = [[1,2],[4,-5]]
-rect2 = [[2,2],[5,3]]
+rect2 = [[2,2],[5,-7]]
 print(overlap(rect1,rect2))
 
 
@@ -78,6 +79,7 @@ assert overlap([[1,2],[4,-5]],[[1,2],[4,-5]]) == 21 #Rectangle B completely fits
 assert overlap([[1,2],[4,-5]],[[2,2],[3,-4]]) == 6 #Rectangle B stretches inside A
 assert overlap([[1,2],[4,-5]],[[2,2],[3,3]]) == 0 #Rectangle B touchs but is not in A
 assert overlap([[1,2],[4,-5]],[[2,2],[5,1]]) == 2 #Rectangle B stretches to the right past A
+assert overlap([[1,2],[4,-5]],[[2,2],[5,-7]]) == 14 #Rectangle B stretches to bottom right
 assert overlap([[1,5],[8,50]],[[-2,-2],[-5,-10]]) == 0 #Rectangles are not where close to each other
 assert overlap('cat','dog') == 0 #Ensures only a list as the paramters
 assert overlap([],[1,2]) == 0 #Ensures no empty lists
