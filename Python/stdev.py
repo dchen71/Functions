@@ -1,4 +1,6 @@
 #Computes standard deviation of a list
+import statistics
+import math
 
 def stdev(A):
 	#Checks if input is a list
@@ -9,8 +11,18 @@ def stdev(A):
 	if len(A) <= 1:
 		return 0
 
-print(stdev([]))
+	mean = sum(A) / len(A)
+	sigma = 0
+	for i in A:
+		sigma += math.pow((i - mean),2)
+	return math.sqrt(sigma / (len(A) - 1))
 
+#Tests to ensure that the proper standard deviation is returned
 assert stdev('cat') == 0
 assert stdev([]) == 0
 assert stdev([5]) == 0
+assert stdev([1,2]) == statistics.stdev([1,2])
+assert stdev([-1,2]) == statistics.stdev([-1,2])
+assert stdev([1,2,3,5]) == statistics.stdev([1,2,3,5])
+assert stdev([-1,2,-3,5]) == statistics.stdev([-1,2,-3,5])
+assert stdev([-1,2.3,-3,5]) == statistics.stdev([-1,2.3,-3,5])
