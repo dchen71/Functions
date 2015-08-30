@@ -21,27 +21,27 @@ def overlap(A,B):
         return overlap
 
     #Separting the vertexes into easier to read variables and sorts them into top left to bottom right
-    A_x1 = A[0][0] if A[0][0] < A[1][0] else A[1][0]
-    A_y1 = A[0][1] if A[0][1] > A[1][1] else A[1][1]
-    A_x2 = A[1][0] if A[1][0] > A[0][0] else A[0][0]
-    A_y2 = A[1][1] if A[1][1] < A[0][1] else A[0][1]
-    B_x1 = B[0][0] if B[0][0] < B[1][0] else B[1][0]
-    B_y1 = B[0][1] if B[0][1] > B[1][1] else B[1][1]
-    B_x2 = B[1][0] if B[1][0] > B[0][0] else B[0][0]
-    B_y2 = B[1][1] if B[1][1] < B[0][1] else B[0][1]
+    K = A[0][0] if A[0][0] < A[1][0] else A[1][0]
+    N = A[0][1] if A[0][1] > A[1][1] else A[1][1]
+    M = A[1][0] if A[1][0] > A[0][0] else A[0][0]
+    L = A[1][1] if A[1][1] < A[0][1] else A[0][1]
+    P = B[0][0] if B[0][0] < B[1][0] else B[1][0]
+    S = B[0][1] if B[0][1] > B[1][1] else B[1][1]
+    R = B[1][0] if B[1][0] > B[0][0] else B[0][0]
+    Q = B[1][1] if B[1][1] < B[0][1] else B[0][1]
 
 
     #Tests whether or not the rectangles overlap and computes the overlap area
     #Will only work on non-directional rectangles
-    overlap = compute(A_x1, A_x2, A_y1, A_y2, B_x1, B_x2, B_y1, B_y2)
-    overlap = compute(B_x1, B_x2, B_y1, B_y2, A_x1, A_x2, A_y1, A_y2) if overlap == 0 else overlap
+    overlap = compute(K, M, N, L, P, R, S, Q)
+    overlap = compute(P, R, S, Q, K, M, N, L) if overlap == 0 else overlap
 
     return (overlap)
 
 def area(A):
     return abs((A[0][0] - A[1][0]) * (A[0][1] - A[1][1]))
 
-def compute(A_x1,A_x2,A_y1,A_y2,B_x1, B_x2, B_y1, B_y2):
+def compute(K,M,N,L,P, R, S, Q):
     overlap = 0
 
     #Interior variables
@@ -50,57 +50,60 @@ def compute(A_x1,A_x2,A_y1,A_y2,B_x1, B_x2, B_y1, B_y2):
     in_y1 = 0
     in_y2 = 0
 
-    if A_x1 <= B_x1 & B_x1 <= A_x2:
-        if A_y1 >= B_y1 & B_y1 >= A_y2: #Top of B fits in
-            if B_x2 >= A_x2:
-                in_x2 = A_x2
+    if K <= P & P <= M:
+        if N >= S & S >= L: #Top of B fits in
+            if R >= M:
+                in_x2 = M
             else:
-                in_x2 = B_x2
-            in_y1 = A_y1
-            in_x1 = B_x1
-            if B_y2 >= A_y2: 
-                if B_y2 < A_y1: #Assuming rectangle B completely fits inside
-                    in_y2 = B_y2
-            elif B_y2 <= A_y2: #Assuming x coords fit inside but y at bottom juts out
-                in_y2 = A_y2
-        elif B_y1 > A_y1:
-            if B_x2 >= A_x2:
-                in_x2 = A_x2
-                if A_y1 < B_y2 & B_y2 > A_y2:
+                in_x2 = R
+            in_y1 = N
+            in_x1 = P
+            if Q >= L: 
+                if Q < N: #Assuming rectangle B completely fits inside
+                    in_y2 = Q
+            elif Q <= L: #Assuming x coords fit inside but y at bottom juts out
+                in_y2 = L
+        elif S > N:
+            if R >= M:
+                in_x2 = M
+                if N < Q & Q > L:
                     in_x2 = 0
             else:
-                in_x2 = B_x2
-            in_y1 = A_y1
-            in_x1 = B_x1
-            if B_y2 <= A_y2:
-                in_y2 = A_y2
+                in_x2 = R
+            in_y1 = N
+            in_x1 = P
+            if Q <= L:
+                in_y2 = L
 
-            elif B_y2 > A_y2:
-                in_y2 = B_y2
-                if A_y1 < B_y2 & B_y2 > A_y2:
+            elif Q > L:
+                in_y2 = Q
+                if N < Q & Q > L:
                     in_y1 = 0
                     in_x1 = 0
         overlap = area([[in_x1, in_y1], [in_x2, in_y2]])
-    elif B_x2 <= A_x2:
-        if B_y1 >= A_y2:
-            in_x2 = B_x2
-        if A_x1 <= B_x2:
-            in_x1 = A_x1
-        if B_y1 >= A_y1 & B_y1 >= A_y2: #Checks if rect B diagonal is outside of the rect A
-            in_y1 = A_y1
-            if B_y2 >= A_y2: 
-                in_y2 = B_y2
-            elif B_y2 <= A_y2: #Assuming x coords fit inside but y at bottom juts out
-                in_y2 = A_y2
-        elif B_y1 <= A_y1 & B_y1 >= A_y2:
-            in_y1 = B_y1
-            if B_y2 >= A_y2: 
-                in_y2 = B_y2
-            elif B_y2 <= A_y2: #Assuming x coords fit inside but y at bottom juts out
-                in_y2 = A_y2
+    elif R <= M:
+        if S >= L:
+            in_x2 = R
+        if K <= R:
+            in_x1 = K
+        if S >= N & S >= L: #Checks if rect B diagonal is outside of the rect A
+            in_y1 = N
+            if Q >= L: 
+                in_y2 = Q
+            elif Q <= L: #Assuming x coords fit inside but y at bottom juts out
+                in_y2 = L
+        elif S <= N & S >= L:
+            in_y1 = S
+            if Q >= L: 
+                in_y2 = Q
+            elif Q <= L: #Assuming x coords fit inside but y at bottom juts out
+                in_y2 = L
         overlap = area([[in_x1, in_y1], [in_x2, in_y2]])
 
+    print(area(P,Q,R,S))
     return(overlap)
+
+print(overlap([[0,2],[5,0]],[[-1,1],[1,-1]]))
 
 #Testing
 assert overlap([[1,1],[1,1]],[[2,2],[3,1]]) == 0 #No lines
