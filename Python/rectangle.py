@@ -30,34 +30,56 @@ def overlap(A,B):
     B_x2 = B[1][0] if B[1][0] > B[0][0] else B[0][0]
     B_y2 = B[1][1] if B[1][1] < B[0][1] else B[0][1]
 
+
+    #Tests whether or not the rectangles overlap and computes the overlap area
+    #Will only work on non-directional rectangles
+    overlap = compute(A_x1, A_x2, A_y1, A_y2, B_x1, B_x2, B_y1, B_y2)
+    overlap = compute(B_x1, B_x2, B_y1, B_y2, A_x1, A_x2, A_y1, A_y2) if overlap == 0 else overlap
+
+    return (overlap)
+
+def area(A):
+    return abs((A[0][0] - A[1][0]) * (A[0][1] - A[1][1]))
+
+def compute(A_x1,A_x2,A_y1,A_y2,B_x1, B_x2, B_y1, B_y2):
+    overlap = 0
+
     #Interior variables
     in_x1 = 0
     in_x2 = 0
     in_y1 = 0
     in_y2 = 0
 
-    #Tests whether or not the rectangles overlap and computes the overlap area
-    #Will only work on non-directional rectangles
     if A_x1 <= B_x1 & B_x1 <= A_x2:
-        in_x1 = B_x1
-        if B_x2 >= A_x2:
-            in_x2 = A_x2
-        else:
-            in_x2 = B_x2
-        
         if A_y1 >= B_y1 & B_y1 >= A_y2: #Top of B fits in
+            if B_x2 >= A_x2:
+                in_x2 = A_x2
+            else:
+                in_x2 = B_x2
             in_y1 = A_y1
+            in_x1 = B_x1
             if B_y2 >= A_y2: 
                 if B_y2 < A_y1: #Assuming rectangle B completely fits inside
                     in_y2 = B_y2
             elif B_y2 <= A_y2: #Assuming x coords fit inside but y at bottom juts out
                 in_y2 = A_y2
         elif B_y1 > A_y1:
+            if B_x2 >= A_x2:
+                in_x2 = A_x2
+                if A_y1 < B_y2 & B_y2 > A_y2:
+                    in_x2 = 0
+            else:
+                in_x2 = B_x2
             in_y1 = A_y1
+            in_x1 = B_x1
             if B_y2 <= A_y2:
                 in_y2 = A_y2
+
             elif B_y2 > A_y2:
                 in_y2 = B_y2
+                if A_y1 < B_y2 & B_y2 > A_y2:
+                    in_y1 = 0
+                    in_x1 = 0
         overlap = area([[in_x1, in_y1], [in_x2, in_y2]])
     elif B_x2 <= A_x2:
         if B_y1 >= A_y2:
@@ -78,20 +100,12 @@ def overlap(A,B):
                 in_y2 = A_y2
         overlap = area([[in_x1, in_y1], [in_x2, in_y2]])
 
-
-    return (overlap)
-
-def area(A):
-    return abs((A[0][0] - A[1][0]) * (A[0][1] - A[1][1]))
-
-rect1 = [[1,50],[8,5]]
-rect2 = [[-2,-2],[-5,-10]]
-print(overlap(rect1,rect2))
-
+    return(overlap)
 
 #Testing
 assert overlap([[1,1],[1,1]],[[2,2],[3,1]]) == 0 #No lines
 assert overlap([[1,2],[4,-5]],[[2,2],[3,1]]) == 1 #Rectangle B completely fits inside A
+assert overlap([[2,2],[3,1]],[[1,2],[4,-5]]) == 1 #Rectangle A completely fits inside B
 assert overlap([[1,2],[4,-5]],[[1,2],[4,-5]]) == 21 #Rectangle B completely fits inside A
 assert overlap([[1,2],[4,-5]],[[2,2],[3,-4]]) == 6 #Rectangle B stretches inside A
 assert overlap([[1,2],[4,-5]],[[2,2],[3,3]]) == 0 #Rectangle B touchs but is not in A
@@ -104,6 +118,7 @@ assert overlap([[1,2],[4,-5]],[[-1,4],[2,-7]]) == 7 #Rectangle cuts in through l
 assert overlap([[1,2],[4,-5]],[[-1,-1],[2,-3]]) == 2 #Retangle B stretches into A from the left
 assert overlap([[1,2],[4,-5]],[[-1,-4],[2,-6]]) == 1 #Rectangle B intersects from left
 assert overlap([[1,50],[8,5]],[[-2,-2],[-5,-10]]) == 0 #Rectangles are not where close to each other
+assert overlap([[-2,-2],[-5,-10]],[[1,50],[8,5]]) == 0 #Rectangles are not where close to each other
 assert overlap([[1,50],[8,5]],[[0,5],[3,-10]]) == 0 #Rectangles are not where close to each other
 assert overlap([[1,50],[8,5]],[[1,0],[5,-20]]) == 0 #Rectangles are not where close to each other
 assert overlap('cat','dog') == 0 #Ensures only a list as the paramters
