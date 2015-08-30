@@ -44,35 +44,38 @@ def overlap(A,B):
             in_x2 = A_x2
         else:
             in_x2 = B_x2
+        
         if A_y1 >= B_y1 & B_y1 >= A_y2: #Top of B fits in
             in_y1 = A_y1
             if B_y2 >= A_y2: 
                 if B_y2 < A_y1: #Assuming rectangle B completely fits inside
                     in_y2 = B_y2
             elif B_y2 <= A_y2: #Assuming x coords fit inside but y at bottom juts out
-                print('here')
                 in_y2 = A_y2
-            else:
-                print('mm')
         elif B_y1 > A_y1:
-            print('tgbb')
             in_y1 = A_y1
             if B_y2 <= A_y2:
                 in_y2 = A_y2
-                print('wazop')
             elif B_y2 > A_y2:
                 in_y2 = B_y2
-                print('cao')
-            print(B_y2)
-            print(A_y2)
-            print(in_y1)
-            print(in_y2)
-            print(in_x1)
-            print(in_x2)
 
         overlap = area([[in_x1, in_y1], [in_x2, in_y2]])
-    else:
-        print('tbd')
+    elif B_x2 <= A_x2:
+        in_x2 = B_x2
+        if A_x1 <= B_x2:
+            in_x1 = A_x1
+        if B_y1 >= A_y1 & B_y1 >= A_y2: #Checks if rect B diagonal is outside of the rect A
+            print('woolooloo')
+            in_y1 = A_y1
+            if B_y2 >= A_y2: 
+                in_y2 = B_y2
+            elif B_y2 <= A_y2: #Assuming x coords fit inside but y at bottom juts out
+                in_y2 = A_y2
+        elif B_y1 > A_y1:
+            print('wooloot')
+            pass
+        print(in_y2)
+        overlap = area([[in_x1, in_y1], [in_x2, in_y2]])
 
 
     return (overlap)
@@ -81,7 +84,7 @@ def area(A):
     return abs((A[0][0] - A[1][0]) * (A[0][1] - A[1][1]))
 
 rect1 = [[1,2],[4,-5]]
-rect2 = [[3,4],[7,-6]]
+rect2 = [[-1,4],[2,1]]
 print(overlap(rect1,rect2))
 
 
