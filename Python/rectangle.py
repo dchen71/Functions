@@ -58,34 +58,24 @@ def overlap(A,B):
                 in_y2 = A_y2
             elif B_y2 > A_y2:
                 in_y2 = B_y2
-
         overlap = area([[in_x1, in_y1], [in_x2, in_y2]])
     elif B_x2 <= A_x2:
-        print('should bbe in box')
-        in_x2 = B_x2
+        if B_y1 >= A_y2:
+            in_x2 = B_x2
         if A_x1 <= B_x2:
             in_x1 = A_x1
         if B_y1 >= A_y1 & B_y1 >= A_y2: #Checks if rect B diagonal is outside of the rect A
-            print('here it is')
             in_y1 = A_y1
             if B_y2 >= A_y2: 
-                print('here')
                 in_y2 = B_y2
             elif B_y2 <= A_y2: #Assuming x coords fit inside but y at bottom juts out
-                print('why')
                 in_y2 = A_y2
         elif B_y1 <= A_y1 & B_y1 >= A_y2:
             in_y1 = B_y1
             if B_y2 >= A_y2: 
-                print('here')
                 in_y2 = B_y2
             elif B_y2 <= A_y2: #Assuming x coords fit inside but y at bottom juts out
-                print('why')
                 in_y2 = A_y2
-        print(in_x1)
-        print(in_y1)
-        print(in_x2)
-        print(in_y2)
         overlap = area([[in_x1, in_y1], [in_x2, in_y2]])
 
 
@@ -94,8 +84,8 @@ def overlap(A,B):
 def area(A):
     return abs((A[0][0] - A[1][0]) * (A[0][1] - A[1][1]))
 
-rect1 = [[1,5],[4,-5]]
-rect2 = [[-1,-1],[2,-3]]
+rect1 = [[1,50],[8,5]]
+rect2 = [[-2,-2],[-5,-10]]
 print(overlap(rect1,rect2))
 
 
@@ -113,7 +103,9 @@ assert overlap([[1,2],[4,-5]],[[-1,4],[2,1]]) == 1 #Part of a corner with diag i
 assert overlap([[1,2],[4,-5]],[[-1,4],[2,-7]]) == 7 #Rectangle cuts in through left to part of Rect A
 assert overlap([[1,2],[4,-5]],[[-1,-1],[2,-3]]) == 2 #Retangle B stretches into A from the left
 assert overlap([[1,2],[4,-5]],[[-1,-4],[2,-6]]) == 1 #Rectangle B intersects from left
-assert overlap([[1,5],[8,50]],[[-2,-2],[-5,-10]]) == 0 #Rectangles are not where close to each other
+assert overlap([[1,50],[8,5]],[[-2,-2],[-5,-10]]) == 0 #Rectangles are not where close to each other
+assert overlap([[1,50],[8,5]],[[0,5],[3,-10]]) == 0 #Rectangles are not where close to each other
+assert overlap([[1,50],[8,5]],[[1,0],[5,-20]]) == 0 #Rectangles are not where close to each other
 assert overlap('cat','dog') == 0 #Ensures only a list as the paramters
 assert overlap([],[1,2]) == 0 #Ensures no empty lists
 assert overlap([],[]) == 0 #Ensures no empty lists
