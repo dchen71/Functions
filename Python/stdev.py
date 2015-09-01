@@ -2,27 +2,41 @@
 import statistics
 import math
 
-def stdev(A):
-	#Checks if input is a list
-	if not isinstance(A, list):
-		return 0
+#Class which takes a set of values and returns the standard devation of the values in the list
+class stdev(object):
+	def __init__(self, values):
+		if self.validator(values) != 0:
+			self.values = values
+			self.sigma = 0
+			self.mean = sum(self.values) / len(self.values)
+			self.stdev = self.calc_stdev()
+		else:
+			self.stdev = 0
 
-	#Checks to make sure the len is greater than 1
-	if len(A) <= 1:
-		return 0
+	#Calculates the standard deviation
+	def calc_stdev(self):
+		for i in self.values:
+			self.sigma += math.pow((i - self.mean),2)
+		self.stdev =  math.sqrt(self.sigma / (len(self.values) - 1))
 
-	mean = sum(A) / len(A)
-	sigma = 0
-	for i in A:
-		sigma += math.pow((i - mean),2)
-	return math.sqrt(sigma / (len(A) - 1))
+		return self.stdev
+
+	#Logic checker for if the list is a list and if its if its length is greater than 1
+	def validator(self, values):
+		if not isinstance(values, list):
+			return 0
+		if len(values) <= 1:
+			return 0
+
+	def get_stdev(self):
+		return self.stdev
 
 #Tests to ensure that the proper standard deviation is returned
-assert stdev('cat') == 0
-assert stdev([]) == 0
-assert stdev([5]) == 0
-assert stdev([1,2]) == statistics.stdev([1,2])
-assert stdev([-1,2]) == statistics.stdev([-1,2])
-assert stdev([1,2,3,5]) == statistics.stdev([1,2,3,5])
-assert stdev([-1,2,-3,5]) == statistics.stdev([-1,2,-3,5])
-assert stdev([-1,2.3,-3,5]) == statistics.stdev([-1,2.3,-3,5])
+assert stdev('cat').get_stdev() == 0
+assert stdev([]).get_stdev() == 0
+assert stdev([5]).get_stdev() == 0
+assert stdev([1,2]).get_stdev() == statistics.stdev([1,2])
+assert stdev([-1,2]).get_stdev() == statistics.stdev([-1,2])
+assert stdev([1,2,3,5]).get_stdev() == statistics.stdev([1,2,3,5])
+assert stdev([-1,2,-3,5]).get_stdev() == statistics.stdev([-1,2,-3,5])
+assert stdev([-1,2.3,-3,5]).get_stdev() == statistics.stdev([-1,2.3,-3,5])
