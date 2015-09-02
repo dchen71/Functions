@@ -1,13 +1,4 @@
-'''
-	Cpimts the approximate number of patterns that appears less or equal than d times
-    ApproximatePatternCount(Text, Pattern, d)
-        count ← 0
-        for i ← 0 to |Text| − |Pattern|
-            Pattern′ ← Text(i , |Pattern|)
-            if HammingDistance(Pattern, Pattern′) ≤ d
-                count ← count + 1
-        return count
-'''
+#Counts the approximate number of patterns that appears less or equal than d times
 
 def hammingdist(s1,s2):
 	dist = 0
@@ -25,14 +16,9 @@ def appratcount(text,pattern,d):
 			count+= 1
 	return count
 
+#Assertions to check function
 text = "TTTAGAGCCTTCAGAGG"
 pattern = "GAGG"
 d = 2
 #4
-print(appratcount(text,pattern,d))
-
-text = "CAGTTTACAAGCTCATGATTATTTCTCCGGCACCGCAAGAAATCTCTGTGTACCACTGATATTAGGCTTTAGAACGTTCAGCGGTTTTATTCCCTCCCTAGAGATATACGTTTCAGGTTTTGTTCTCCACGAACAACTGATACATAAAAATGACACACATCCATTGCGGGTGGTGCAGGCTACAAATGTGCGCTGTTAAAAAAGGAGGGGCAATCAGGAGCGAGGCCTAGCCAAGGTAGTAGCGTATGTAATCGAACCCCACGATACTTTCCGCTCATAAGCGTGTTGTCGGTTCTGACGGTTAGCCCTGCTTAGCTTTAAATCTCTAATAAGGCTTTGTGTTCGCCATACTATCGTCCACATGAACTCCGGCCCAATGTAG"
-pattern = "TATTC"
-d = 2
-#4
-print(appratcount(text,pattern,d))
+assert(appratcount(text,pattern,d)) == 4
