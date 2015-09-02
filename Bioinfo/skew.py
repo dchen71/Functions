@@ -13,11 +13,10 @@ def skew(string):
 			num += 1
 		output += str(num) + " "
 
-	return output
+	return output[:-1]
 
-text = "CATGGGCATCGGCCATACGCC"
-#0 -1 -1 -1 0 1 2 1 1 1 0 1 2 1 0 0 0 0 -1 0 -1 -2
-print(skew(text))
+#Assert to check validity
+assert(skew("CATGGGCATCGGCCATACGCC")) == '0 -1 -1 -1 0 1 2 1 1 1 0 1 2 1 0 0 0 0 -1 0 -1 -2'
 
 text = " TAAAGACTGCCGAGAGGCCAACACGAGTGCTAGAACGAGGGGCGTAAACGCGGGTCCGAT"
 print(skew(text))
