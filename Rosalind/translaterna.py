@@ -19,8 +19,7 @@ def translate(string):
 	return translated
 
 
-#Sample Case 1
+#Assertion cases
 string = "AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA"
-#MAMAPRTEINSTRING
-print(translate(string))
+assert(translate(string)) == 'MAMAPRTEINSTRINGStop'
 
