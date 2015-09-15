@@ -29,10 +29,10 @@ class LineAnalyzer
   	
   	@highest_wf_count = 0
   	@highest_wf_words = Array.new
-  	calculate_word_freqeuncy
+  	calculate_word_frequency()
   end
 
-  def calculate_word_freqeuncy
+  def calculate_word_frequency()
   	#calc the highest freq word and count
   	#highest_wf_count = count
   	#highest_wf_words = words
@@ -99,19 +99,30 @@ class Solution
 
   def analyze_file()
   	if File.exist? 'test.txt'
+  		@analyzed = Array.new
+  		@line_number = 0
   		File.foreach('test.txt') do |line|
-  			puts line.chomp
-  			#array of lineanalyzer
-  			#
+  			@line_number += 1
+  			@analyzed.push(LineAnalyzer.new(line, @line_number))
   		end
   	end
   end
 
   def calculate_line_with_highest_frequency()
+  	@values = Array.new
+  	@analyzed.each do |line|
+  		@values.push(line.highest_wf_count)
+  	end
 
+  	@highest_count_across_lines = @values.max
   end
 
   def print_highest_word_frequency_across_lines
-
+  	calculate_line_with_highest_frequency()
+  	@analyzed.each do |line|
+  		if line.highest_wf_count == @highest_count_across_lines.max
+  			@highest_count_words_accross_lines.push(line.highest_wf_words)
+  		end
+  	end
   end
 end
