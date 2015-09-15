@@ -36,9 +36,14 @@ class LineAnalyzer
   	#calc the highest freq word and count
   	#highest_wf_count = count
   	#highest_wf_words = words
-  	freq = Hash.new
+  	freq = Hash.new(0)
   	@content.split.each do |word|
   		freq[word.downcase] += 1
+  	end
+
+  	@highest_wf_count = freq.values.max
+  	freq.each_pair do |key, value|
+  		@highest_wf_words.push(key) if value == @highest_wf_count
   	end
   end
 
