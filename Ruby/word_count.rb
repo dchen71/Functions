@@ -22,13 +22,15 @@ class LineAnalyzer
   #  provided content and store that in the highest_wf_count attribute.
   #* identify the words that were used the maximum number of times and
   #  store that in the highest_wf_words attribute.
+  attr_accessor :highest_wf_count, :highest_wf_words, :content, :line_number
+
   def initialize(content, line_number)
-  	@content ||= "test"
-  	@content = content
-  	@line_number = line_number
+  	self.content ||= "test"
+  	self.content = content
+  	self.line_number = line_number
   	
-  	@highest_wf_count = 0
-  	@highest_wf_words = Array.new
+  	self.highest_wf_count = 0
+  	self.highest_wf_words = Array.new
   	calculate_word_frequency()
   end
 
@@ -45,22 +47,6 @@ class LineAnalyzer
   	freq.each_pair do |key, value|
   		@highest_wf_words.push(key) if value == @highest_wf_count
   	end
-  end
-
-  def highest_wf_count
-  	@highest_wf_count
-  end
-
-  def highest_wf_words
-  	@highest_wf_words
-  end
-
-  def content
-  	@content
-  end
-
-  def line_number
-  	@line_number
   end
 end
 
