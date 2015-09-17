@@ -77,38 +77,57 @@ class Solution
   #Implement the print_highest_word_frequency_across_lines() method to
   #* print the result in the following format
   
-  def initialize()
-  	@highest_count_across_lines = 0
-  	@highest_count_words_accross_lines = Array.new
+  def initialize
+  	@analyzers = Array.new
   end
 
 
   def analyze_file()
   	if File.exist? 'test.txt'
-  		@analyzed = Array.new
   		@line_number = 0
   		File.foreach('test.txt') do |line|
   			@line_number += 1
-  			@analyzed.push(LineAnalyzer.new(line, @line_number))
+  			@analyzers.push(LineAnalyzer.new(line, @line_number))
   		end
   	end
   end
 
   def calculate_line_with_highest_frequency()
+  	@highest_count_across_lines = 0
+  	@highest_count_words_across_lines = Array.new
   	@values = Array.new
-  	@analyzed.each do |line|
+  	#Finds the highest count for a word
+  	@analyzers.each do |line|
   		@values.push(line.highest_wf_count)
   	end
 
   	@highest_count_across_lines = @values.max
+
+  	#Gets the highest value words
+  	@analyzers.each do |line|
+  		if line.highest_wf_count == @highest_count_across_lines
+  			@highest_count_words_across_lines.push(line.highest_wf_words)
+  		end
+  	end
+
   end
 
   def print_highest_word_frequency_across_lines
-  	calculate_line_with_highest_frequency()
-  	@analyzed.each do |line|
-  		if line.highest_wf_count == @highest_count_across_lines.max
-  			@highest_count_words_accross_lines.push(line.highest_wf_words)
-  		end
+  	@highest_count_words_across_lines.each do |word|
+  		puts word
   	end
+  end
+
+  def analyzers
+  	@analyzers
+  end
+
+  #Traditional getters
+  def highest_count_words_across_lines
+  	@highest_count_words_across_lines
+  end
+
+  def highest_count_across_lines
+  	@highest_count_across_lines
   end
 end
