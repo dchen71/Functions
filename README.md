@@ -1,27 +1,38 @@
-## Self Study
-Contains code for various functions from various locations for self study purposes</br>
+## Functions
+Contains code for various functions from various locations for self study purposes  
 
-</br>
-<strong>Code Wars</strong>
-<em><li>Contains solutions written in various languages for code wars</li></em>
+###Bioinfo  
+*Contains unsorted functions written in python related to bioninformatics*  
 
-<strong>Codecademy</strong>
-<em><li>Contains implementations of websites featured as problems in Codecademy</li></em>
+###C++
+*Contains functions and classes*  
 
-<strong>Coderbyte</strong>
-<em><li>Contains solutions to various problems presented on Coderbyte</li></em>
+###Coderbyte  
+*Contains solutions to various problems presented on Coderbyte*  
 
-<strong>DB5 SQL</strong>
-<em><li>Contains solution to the problems presented in the SQL course in Standford Lagunita</li></em>
+###Codecademy  
+*Contains implementations of websites featured as problems in Codecademy*  
 
-<strong>Random Bioinfo</strong>
-<em><li>Contains unsorted functions written in python related to bioninformatics</li></em>
+###Code Wars  
+*Contains solutions written in various languages for code wars*  
 
-<strong>Rosalind</strong>
-<em><li>Contains solutions in python for the bioinformatics/programming challenges on Rosalind</li></em>
+###DB5 SQL  
+*Contains solution to the problems presented in the SQL course in Standford Lagunita*  
 
-<strong>Test</strong>
-<em><li>Contains code for things being tested or implemented for usage in various places</li></em>
+###Java
+*Contains classes/functions written in Java*  
 
-<strong>Testing with RSpec</strong>
-<em><li>Contains code for the introductory lesson</li></em>
+###Matlab
+*Contains functions written for matlab*  
+
+###Ruby
+*Contains classes/functions written in ruby*  
+
+###Rosalind  
+*Contains solutions in python for the bioinformatics/programming challenges on Rosalind*  
+
+###Test  
+*Contains code for things being tested or implemented for usage in various places*  
+
+###Testing with RSpec
+*Contains code for the introductory lesson*  
