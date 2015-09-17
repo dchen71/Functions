@@ -84,7 +84,7 @@ class Solution
     #Gets the highest value words
     @analyzers.each do |line|
       if line.highest_wf_count == @highest_count_across_lines
-        @highest_count_words_across_lines.push(line.line_number)
+        @highest_count_words_across_lines.push(line)
       end
     end
 
@@ -95,7 +95,7 @@ class Solution
   def print_highest_word_frequency_across_lines
     puts "The following words have the highest word frequency per line: "
     @highest_count_words_across_lines.each do |line|
-      puts "#{@analyzers[line - 1].highest_wf_words} on line #{line}"
+      puts "#{@analyzers[line.line_number - 1].highest_wf_words} on line #{line.line_number}"
     end
   end
 
