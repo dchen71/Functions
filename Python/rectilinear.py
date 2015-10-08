@@ -1,5 +1,4 @@
-# you can use print for debugging purposes, e.g.
-# print "this is a debug message"
+# Calculates the area of two rectangles subtracting their overlap from the total
 
 def solution(K, L, M, N, P, Q, R, S):
     # write your code in Python 2.7
