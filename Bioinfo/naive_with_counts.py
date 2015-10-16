@@ -1,3 +1,5 @@
+#Naive matching returning where index matched, number of alignments it goes through, and number of characters it checks each search
+
 def naive_with_counts(p, t):
     occurrences = []
     num_alignments = 0
