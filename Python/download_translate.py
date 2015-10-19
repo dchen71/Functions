@@ -7,7 +7,9 @@
 #czech
 
 def download_translate(word, language):
-	var lang = language
-	var query = word
-	var url = "http://translate.google.com/translate_tts?tl=" + lang + "&q=\"" + query + "\""
+	lang = language
+	query = word
+	url = "http://translate.google.com/translate_tts?tl=" + lang + "&q=\"" + query + "\""
 	pass
+
+
