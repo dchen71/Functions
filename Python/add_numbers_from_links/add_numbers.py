@@ -25,3 +25,6 @@ def add_numbers(url):
 #Tests
 url = "http://pr4e.dr-chuck.com/tsugi/mod/python-data/data/comments_42.html"
 assert(add_numbers(url)) == 2553
+
+url = "http://pr4e.dr-chuck.com/tsugi/mod/python-data/data/comments_169150.html"
+assert(add_numbers(url)) == 2391
