@@ -11,12 +11,14 @@ def motifenumeration(Dna, k, d):
 			for j in range(len(seq) - k):
 				test = seq[j:j+k]
 				mismatches = 0
-				for k in range(k):
+				for m in range(k):
 					if mismatches < d:
-						if pattern[k] != test[k]:
+						if pattern[m] != test[m]:
 							mismatches += 1
 					else:
 						break
+				if mismatches < d:
+					patterns.add(test)
 	return patterns
 
 k = 3
