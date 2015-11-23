@@ -5,26 +5,36 @@ Output: All (k, d)-motifs in Dna.
 
 def motifenumeration(Dna, k, d):
 	patterns = set()
+	#Checks each seqeunce
 	for seq in Dna:
+		#Checks each kmer in a sequence
 		for i in range(len(seq) - k):
 			pattern = seq[i:i+k]
+			#Checks kmer against each kmer in a sequence for mismatches
 			for j in range(len(seq) - k):
 				test = seq[j:j+k]
-				possible_motif = 0
-				for sequences in Dna:
-					mismatches = 0
-					for m in range(k):
-						if mismatches < d:
-							if pattern[m] != test[m]:
-								mismatches += 1
-						else:
-							break
-					if mismatches < d:
-						possible_motif += 1
-			if possible_motif < d:
-				patterns.add(test)
-
+				mismatches = findMismatches(pattern, test, d)
+				if mismatches <= d:
+					if sharedMotif(Dna, test) == True:
+						patterns.add(test)
 	return patterns
+
+#Finds mismatches in similar length strings
+def findMismatches(kmer, test, d):
+	mismatches = 0
+	for i in range(len(kmer)):
+		if mismatches <= d:
+			if kmer[i] != test[i]:
+				mismatches += 1
+		else:
+			break
+	return mismatches
+
+#Checks if possible motif is in every dna string
+def sharedMotif(Dna, kmer):
+	
+	pass
+
 
 k = 3
 d = 1
