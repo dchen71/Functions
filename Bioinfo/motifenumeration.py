@@ -15,7 +15,7 @@ def motifenumeration(Dna, k, d):
 				test = seq[j:j+k]
 				mismatches = findMismatches(pattern, test, d)
 				if mismatches <= d:
-					if sharedMotif(Dna, test) == True:
+					if sharedMotif(Dna, test, d) == True:
 						patterns.add(test)
 	return patterns
 
@@ -31,9 +31,26 @@ def findMismatches(kmer, test, d):
 	return mismatches
 
 #Checks if possible motif is in every dna string
-def sharedMotif(Dna, kmer):
-	
-	pass
+def sharedMotif(Dna, kmer, d):
+	#for loop to go through get seq in dna
+	##loop thorugh and see if kmer is in each string
+	##return true if so then add kmer to the set
+	shared = False
+	shares = 0
+	for seq in Dna:
+		found = False
+		for i in range(len(seq) - len(kmer)):
+			test = seq[i:i+len(kmer)]
+			if findMismatches(kmer, test, d) <= d:
+				print(kmer + " " + test)
+				found = True
+				shares += 1
+				break
+		if found == False:
+			break
+	if shares == len(Dna):
+		shared = True
+	return shared
 
 
 k = 3
