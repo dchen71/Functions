@@ -41,5 +41,9 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+#Extra do not saves
 Random Bioinfo/__pycache__/hammingdist.cpython-34.pyc
 Bioinfo/Fasta Analysis/dna1.fasta
+Node/node-http/node_modules
+
