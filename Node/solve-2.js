@@ -1,3 +1,5 @@
+//Node script which finds the area/perimeter or rectangle
+
 var rect = require('./rectangle-2');
 
 function solveRect(l,b) {

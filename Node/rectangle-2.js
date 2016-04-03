@@ -1,3 +1,5 @@
+//Node module to find area/perimeter of a rectangle
+
 module.exports = function(x,y,callback) {
   try {
     if (x < 0 || y < 0) {
