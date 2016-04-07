@@ -13,3 +13,8 @@ var port = 3000;
 var app = express();
 
 app.use(morgan('dev'));
+
+
+app.use('/dishes', dishRouter(express))
+app.use('/leaders', leaderRouter(express))
+app.use('/promos', promoRouter(express))
