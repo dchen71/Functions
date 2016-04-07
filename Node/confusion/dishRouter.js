@@ -45,12 +45,5 @@ dishRouter.route('/')
 	        res.end('Deleting dish: ' + req.params.dishId);
 });
 
-app.use('/dishes',dishRouter);
-
-app.use(express.static(__dirname + '/public'));
-
-app.listen(port, hostname, function(){
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
 
 module.exports = dishRouter;

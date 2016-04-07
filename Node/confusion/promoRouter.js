@@ -45,12 +45,5 @@ promoRouter.route('/')
           res.end('Deleting promo: ' + req.params.promoId);
 });
 
-app.use('/promos',promoRouter);
-
-app.use(express.static(__dirname + '/public'));
-
-app.listen(port, hostname, function(){
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
 
 module.exports = promoRouter;

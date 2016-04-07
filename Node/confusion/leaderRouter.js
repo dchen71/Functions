@@ -45,12 +45,4 @@ leaderRouter.route('/')
         res.end('Deleting leader: ' + req.params.leaderId);
 });
 
-app.use('/leaders',leaderRouter);
-
-app.use(express.static(__dirname + '/public'));
-
-app.listen(port, hostname, function(){
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
-
 module.exports = leaderRouter;
